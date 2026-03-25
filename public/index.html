@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>OpenClawZoo</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="banner">
+    <div class="brand">🦞 <span class="brand-main">OpenClaw</span><span class="brand-zoo">Zoo</span></div>
+    <div class="search-bar">
+      <button class="stab active" data-engine="google">Google</button>
+      <button class="stab" data-engine="baidu">百度</button>
+      <input id="searchInput" type="text" placeholder="搜索..."/>
+      <button id="searchBtn">🔍</button>
+    </div>
+    <div class="header-right">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <p class="tagline" data-i18n="tagline">OpenClaw 工具生态导航中心</p>
+    </div>
+  </header>
+  <div class="layout">
+    <nav class="sidebar">
+      <div id="sideNav"></div>
+    </nav>
+    <main id="sections"></main>
+  </div>
+  <footer>
+    <p data-i18n="footer">OpenClawZoo © 2026 · 专注 OpenClaw 生态导航</p>
+  </footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
