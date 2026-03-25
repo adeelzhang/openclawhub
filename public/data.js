@@ -1,374 +1,2640 @@
-// OpenClawZoo 数据配置
-// 结构说明：name=中文名 nameEn=英文名 desc=中文描述 descEn=英文描述 tag=cloud|local|free|hot
 const CATEGORIES = [
-{
-  id:'variants', emoji:'🦞',
-  name:'变种虾', nameEn:'Variants',
-  desc:'国内外知名 OpenClaw 变种产品', descEn:'Notable OpenClaw variants worldwide',
-  items:[
-    {name:'OpenClaw 官方',nameEn:'OpenClaw Official',icon:'🦞',desc:'开源、本地优先的自主 AI 助手',descEn:'Open-source, local-first autonomous AI assistant',url:'https://openclaw.ai',tag:'local'},
-    {name:'Kimi Claw',nameEn:'Kimi Claw',icon:'🌙',desc:'集成 OpenClaw 框架的 Kimi 云端版',descEn:'Kimi cloud version with OpenClaw integration',url:'https://www.kimi.com/bot',tag:'cloud'},
-    {name:'MaxClaw',nameEn:'MaxClaw',icon:'⚡',desc:'10 秒完成 OpenClaw 云端部署',descEn:'Deploy OpenClaw to cloud in 10 seconds',url:'https://agent.minimaxi.com/max-claw',tag:'cloud'},
-    {name:'飞书 OpenClaw',nameEn:'Feishu OpenClaw',icon:'📋',desc:'原版 OpenClaw 能力 + 飞书插件',descEn:'Full OpenClaw + Feishu official plugin',url:'https://openclaw.feishu.cn/home',tag:'cloud'},
-    {name:'ArkClaw',nameEn:'ArkClaw',icon:'🌋',desc:'火山引擎云端 OpenClaw 版本',descEn:'Volcengine cloud OpenClaw edition',url:'https://www.volcengine.com/experience/ark?mode=claw',tag:'cloud'},
-    {name:'扣子 Coze',nameEn:'Coze',icon:'🤖',desc:'字节 AI Agent 平台',descEn:'ByteDance AI Agent platform',url:'https://code.coze.cn/home',tag:'cloud'},
-    {name:'DuClaw',nameEn:'DuClaw',icon:'🐾',desc:'百度即开即用智能体',descEn:'Baidu ready-to-use AI agent',url:'https://cloud.baidu.com/product/duclaw.html',tag:'cloud'},
-    {name:'MiMo Claw',nameEn:'MiMo Claw',icon:'📱',desc:'小米大模型 OpenClaw',descEn:'Xiaomi LLM OpenClaw edition',url:'https://aistudio.xiaomimimo.com/',tag:'cloud'},
-    {name:'StepClaw',nameEn:'StepClaw',icon:'🚀',desc:'阶跃星辰云端助手',descEn:'StepFun cloud AI assistant',url:'https://www.stepfun.com/openclaw',tag:'cloud'},
-    {name:'AstronClaw',nameEn:'AstronClaw',icon:'🌟',desc:'讯飞一键部署版本',descEn:'iFlytek one-click deploy edition',url:'https://agent.xfyun.cn/astron-claw',tag:'cloud'},
-    {name:'Claude Code',nameEn:'Claude Code',icon:'🟣',desc:'Anthropic 终端编程 Agent',descEn:'Anthropic terminal coding agent',url:'https://claude.ai/code',tag:'cloud'},
-    {name:'Codex CLI',nameEn:'Codex CLI',icon:'🟢',desc:'OpenAI 终端编程助手',descEn:'OpenAI terminal coding assistant',url:'https://github.com/openai/codex',tag:'free'},
-    {name:'Gemini CLI',nameEn:'Gemini CLI',icon:'💎',desc:'Google Gemini 终端版',descEn:'Google Gemini terminal edition',url:'https://github.com/google-gemini/gemini-cli',tag:'free'},
-    {name:'OpenHands',nameEn:'OpenHands',icon:'🤲',desc:'开源自主软件开发 Agent',descEn:'Open-source autonomous software dev agent',url:'https://www.all-hands.dev',tag:'free'},
-    {name:'Amp',nameEn:'Amp',icon:'⚡',desc:'Anthropic 新一代编码 Agent',descEn:'Anthropic next-gen coding agent',url:'https://ampcode.com',tag:'cloud'},
-    {name:'Cline',nameEn:'Cline',icon:'🖥️',desc:'VSCode AI 自主编程 Agent',descEn:'Autonomous AI coding agent for VSCode',url:'https://github.com/cline/cline',tag:'free'},
-    {name:'Roo Code',nameEn:'Roo Code',icon:'🦘',desc:'VSCode 多模型编程 Agent',descEn:'Multi-model coding agent for VSCode',url:'https://github.com/RooVetGit/Roo-Code',tag:'free'},
-    {name:'Aider',nameEn:'Aider',icon:'🤝',desc:'终端 AI 结对编程工具',descEn:'AI pair programming in your terminal',url:'https://aider.chat',tag:'free'},
-    {name:'Continue',nameEn:'Continue',icon:'🔗',desc:'开源 AI 编程插件',descEn:'Open-source AI coding plugin',url:'https://www.continue.dev',tag:'free'},
-    {name:'Devin',nameEn:'Devin',icon:'🤖',desc:'全自主 AI 软件工程师',descEn:'Fully autonomous AI software engineer',url:'https://devin.ai',tag:'cloud'},
-    {name:'Cursor',nameEn:'Cursor',icon:'🖱️',desc:'AI 优先的代码编辑器',descEn:'AI-first code editor',url:'https://cursor.sh',tag:'cloud'},
-    {name:'Windsurf',nameEn:'Windsurf',icon:'🏄',desc:'Codeium AI 编辑器',descEn:'Codeium AI-powered editor',url:'https://codeium.com/windsurf',tag:'cloud'},
-    {name:'Zed',nameEn:'Zed',icon:'⚡',desc:'高性能编辑器内置 AI',descEn:'High-performance editor with built-in AI',url:'https://zed.dev',tag:'free'},
-    {name:'Copilot',nameEn:'GitHub Copilot',icon:'🐙',desc:'GitHub AI 编程助手',descEn:'GitHub AI coding assistant',url:'https://github.com/features/copilot',tag:'cloud'},
-    {name:'Tabnine',nameEn:'Tabnine',icon:'🔮',desc:'AI 代码补全工具',descEn:'AI code completion tool',url:'https://www.tabnine.com',tag:'cloud'},
-    {name:'Replit AI',nameEn:'Replit AI',icon:'🔁',desc:'在线 IDE + AI 编程',descEn:'Online IDE with AI coding',url:'https://replit.com',tag:'cloud'},
-    {name:'Bolt.new',nameEn:'Bolt.new',icon:'⚡',desc:'AI 全栈应用快速生成',descEn:'AI full-stack app generator',url:'https://bolt.new',tag:'cloud'},
-    {name:'v0',nameEn:'v0 by Vercel',icon:'▲',desc:'AI 生成 React 组件',descEn:'AI-generated React components',url:'https://v0.dev',tag:'cloud'},
-    {name:'Lovable',nameEn:'Lovable',icon:'❤️',desc:'AI 生成全栈 Web 应用',descEn:'AI-generated full-stack web apps',url:'https://lovable.dev',tag:'cloud'},
-    {name:'SWE-agent',nameEn:'SWE-agent',icon:'🐛',desc:'开源自主 Bug 修复 Agent',descEn:'Open-source autonomous bug-fix agent',url:'https://swe-agent.com',tag:'free'},
-  ]
-},
-{
-  id:'cloud', emoji:'☁️',
-  name:'云端虾', nameEn:'Cloud Hosting',
-  desc:'国内外可部署 OpenClaw 的云服务', descEn:'Cloud services to deploy OpenClaw',
-  items:[
-    {name:'阿里云',nameEn:'Alibaba Cloud',icon:'🟠',desc:'国内最大云平台，生态完整',descEn:'Largest cloud platform in China',url:'https://www.aliyun.com',tag:'cloud'},
-    {name:'腾讯云',nameEn:'Tencent Cloud',icon:'🔵',desc:'腾讯旗下云服务，国内稳定',descEn:'Tencent cloud services, stable in China',url:'https://cloud.tencent.com',tag:'cloud'},
-    {name:'华为云',nameEn:'Huawei Cloud',icon:'🌺',desc:'华为企业级云服务',descEn:'Huawei enterprise cloud services',url:'https://www.huaweicloud.com',tag:'cloud'},
-    {name:'AWS',nameEn:'AWS',icon:'🟡',desc:'全球最大云平台，功能最全',descEn:'World largest cloud, most features',url:'https://aws.amazon.com',tag:'cloud'},
-    {name:'Google Cloud',nameEn:'Google Cloud',icon:'🌈',desc:'与 AI 服务深度集成',descEn:'Deeply integrated with Google AI',url:'https://cloud.google.com',tag:'cloud'},
-    {name:'Azure',nameEn:'Azure',icon:'🔷',desc:'微软云，企业级可靠',descEn:'Microsoft cloud, enterprise-grade',url:'https://azure.microsoft.com',tag:'cloud'},
-    {name:'DigitalOcean',nameEn:'DigitalOcean',icon:'🌊',desc:'开发者友好，价格实惠',descEn:'Developer-friendly, affordable pricing',url:'https://www.digitalocean.com',tag:'cloud'},
-    {name:'Vultr',nameEn:'Vultr',icon:'⚡',desc:'高性价比，全球节点丰富',descEn:'High value, global node coverage',url:'https://www.vultr.com',tag:'cloud'},
-    {name:'Hetzner',nameEn:'Hetzner',icon:'🇩🇪',desc:'欧洲高性价比云服务器',descEn:'High-value European cloud servers',url:'https://www.hetzner.com',tag:'cloud'},
-    {name:'Linode',nameEn:'Linode (Akamai)',icon:'🟩',desc:'简洁易用的 VPS 服务',descEn:'Simple and easy VPS service',url:'https://www.linode.com',tag:'cloud'},
-    {name:'Vercel',nameEn:'Vercel',icon:'▲',desc:'前端部署首选平台',descEn:'Top platform for frontend deployment',url:'https://vercel.com',tag:'cloud'},
-    {name:'Netlify',nameEn:'Netlify',icon:'🌿',desc:'静态站点与无服务器部署',descEn:'Static site and serverless deployment',url:'https://netlify.com',tag:'cloud'},
-    {name:'Railway',nameEn:'Railway',icon:'🚂',desc:'极简后端部署平台',descEn:'Minimal backend deployment platform',url:'https://railway.app',tag:'cloud'},
-    {name:'Render',nameEn:'Render',icon:'🎨',desc:'全栈应用托管平台',descEn:'Full-stack app hosting platform',url:'https://render.com',tag:'cloud'},
-    {name:'Fly.io',nameEn:'Fly.io',icon:'🪰',desc:'边缘计算应用部署',descEn:'Edge computing app deployment',url:'https://fly.io',tag:'cloud'},
-    {name:'Porter',nameEn:'Porter',icon:'🎒',desc:'基于 Kubernetes 的简化部署',descEn:'Simplified Kubernetes-based deployment',url:'https://porter.run',tag:'cloud'},
-    {name:'Zeabur',nameEn:'Zeabur',icon:'🟣',desc:'一键部署各类应用',descEn:'One-click app deployment',url:'https://zeabur.com',tag:'cloud'},
-    {name:'Sealos',nameEn:'Sealos',icon:'🦭',desc:'国内 K8s 云操作系统',descEn:'K8s-based cloud OS, China-based',url:'https://sealos.io',tag:'cloud'},
-    {name:'1Panel',nameEn:'1Panel',icon:'🖥️',desc:'开源 Linux 服务器管理面板',descEn:'Open-source Linux server management panel',url:'https://1panel.cn',tag:'free'},
-    {name:'Coolify',nameEn:'Coolify',icon:'❄️',desc:'开源自托管 Heroku 替代',descEn:'Open-source self-hosted Heroku alternative',url:'https://coolify.io',tag:'free'},
-    {name:'Dokploy',nameEn:'Dokploy',icon:'🚀',desc:'开源 PaaS 部署工具',descEn:'Open-source PaaS deployment tool',url:'https://dokploy.com',tag:'free'},
-    {name:'CapRover',nameEn:'CapRover',icon:'⚓',desc:'免费开源 PaaS 平台',descEn:'Free open-source PaaS platform',url:'https://caprover.com',tag:'free'},
-    {name:'Oracle Cloud',nameEn:'Oracle Cloud',icon:'🔴',desc:'永久免费套餐可用',descEn:'Always-free tier available',url:'https://www.oracle.com/cloud/',tag:'free'},
-    {name:'Cloudflare Workers',nameEn:'Cloudflare Workers',icon:'🔥',desc:'边缘无服务器计算平台',descEn:'Edge serverless computing platform',url:'https://workers.cloudflare.com',tag:'free'},
-    {name:'Supabase',nameEn:'Supabase',icon:'⚡',desc:'开源 Firebase 替代品',descEn:'Open-source Firebase alternative',url:'https://supabase.com',tag:'free'},
-    {name:'PlanetScale',nameEn:'PlanetScale',icon:'🪐',desc:'无服务器 MySQL 平台',descEn:'Serverless MySQL platform',url:'https://planetscale.com',tag:'cloud'},
-    {name:'Neon',nameEn:'Neon',icon:'🐘',desc:'无服务器 Postgres 平台',descEn:'Serverless Postgres platform',url:'https://neon.tech',tag:'free'},
-    {name:'Upstash',nameEn:'Upstash',icon:'🟢',desc:'无服务器 Redis & Kafka',descEn:'Serverless Redis and Kafka',url:'https://upstash.com',tag:'free'},
-    {name:'百度智能云',nameEn:'Baidu Cloud',icon:'🐾',desc:'百度云服务，AI 能力强',descEn:'Baidu cloud with strong AI capabilities',url:'https://cloud.baidu.com',tag:'cloud'},
-    {name:'移动云',nameEn:'China Mobile Cloud',icon:'📱',desc:'中国移动云计算服务',descEn:'China Mobile cloud computing',url:'https://ecloud.10086.cn',tag:'cloud'},
-  ]
-},
-{
-  id:'tutorials', emoji:'📚',
-  name:'教程虾', nameEn:'Tutorials',
-  desc:'从部署到调优的各类教程', descEn:'Guides from deployment to fine-tuning',
-  items:[
-    {name:'OpenClaw 官方文档',nameEn:'OpenClaw Docs',icon:'📖',desc:'官方完整文档与入门指南',descEn:'Official full docs and getting started',url:'https://docs.openclaw.ai',tag:'free'},
-    {name:'OpenClaw GitHub',nameEn:'OpenClaw GitHub',icon:'🐙',desc:'源码、Issues、讨论区',descEn:'Source code, issues and discussions',url:'https://github.com/openclaw/openclaw',tag:'free'},
-    {name:'OpenClaw Discord',nameEn:'OpenClaw Discord',icon:'💬',desc:'官方社区，实时交流',descEn:'Official community for real-time chat',url:'https://discord.com/invite/clawd',tag:'free'},
-    {name:'ClawHub',nameEn:'ClawHub',icon:'🦞',desc:'Skills 发现与安装平台',descEn:'Skill discovery and install platform',url:'https://clawhub.com',tag:'free'},
-    {name:'掘金 OpenClaw 专栏',nameEn:'Juejin OpenClaw',icon:'💎',desc:'掘金社区 OpenClaw 文章合集',descEn:'OpenClaw articles on Juejin',url:'https://juejin.cn/search?query=OpenClaw',tag:'free'},
-    {name:'知乎 OpenClaw 话题',nameEn:'Zhihu OpenClaw',icon:'🔍',desc:'知乎 OpenClaw 讨论汇总',descEn:'OpenClaw discussions on Zhihu',url:'https://www.zhihu.com/search?q=OpenClaw',tag:'free'},
-    {name:'B站 OpenClaw',nameEn:'Bilibili OpenClaw',icon:'📺',desc:'B 站 OpenClaw 视频教程',descEn:'OpenClaw video tutorials on Bilibili',url:'https://search.bilibili.com/all?keyword=OpenClaw',tag:'free'},
-    {name:'YouTube OpenClaw',nameEn:'YouTube OpenClaw',icon:'▶️',desc:'YouTube OpenClaw 英文教程',descEn:'English OpenClaw tutorials on YouTube',url:'https://www.youtube.com/results?search_query=OpenClaw+AI',tag:'free'},
-    {name:'部署入门指南',nameEn:'Deployment Guide',icon:'🖥️',desc:'从零开始部署 OpenClaw',descEn:'Deploy OpenClaw from scratch',url:'https://docs.openclaw.ai/get-started/install/',tag:'free'},
-    {name:'Skills 开发指南',nameEn:'Skills Dev Guide',icon:'🛠️',desc:'如何为 OpenClaw 编写技能',descEn:'How to write OpenClaw skills',url:'https://docs.openclaw.ai/context/rules',tag:'free'},
-    {name:'配置调优指南',nameEn:'Config & Tuning',icon:'⚙️',desc:'高级配置与性能调优',descEn:'Advanced config and performance tuning',url:'https://docs.openclaw.ai/settings',tag:'free'},
-    {name:'MCP 集成教程',nameEn:'MCP Integration',icon:'🔌',desc:'如何在 OpenClaw 中接入 MCP',descEn:'How to integrate MCP with OpenClaw',url:'https://docs.openclaw.ai',tag:'free'},
-    {name:'Anthropic 提示词指南',nameEn:'Anthropic Prompt Guide',icon:'🟣',desc:'Claude 提示词工程最佳实践',descEn:'Claude prompt engineering best practices',url:'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview',tag:'free'},
-    {name:'OpenAI 提示词指南',nameEn:'OpenAI Prompt Guide',icon:'🟢',desc:'GPT 提示词工程官方教程',descEn:'Official GPT prompt engineering guide',url:'https://platform.openai.com/docs/guides/prompt-engineering',tag:'free'},
-    {name:'LangChain 教程',nameEn:'LangChain Docs',icon:'🦜',desc:'LLM 应用开发框架文档',descEn:'LLM application framework docs',url:'https://python.langchain.com/docs/',tag:'free'},
-    {name:'LlamaIndex 教程',nameEn:'LlamaIndex Docs',icon:'🦙',desc:'数据增强 LLM 框架文档',descEn:'Data-augmented LLM framework docs',url:'https://docs.llamaindex.ai',tag:'free'},
-    {name:'Hugging Face 教程',nameEn:'Hugging Face Course',icon:'🤗',desc:'免费 NLP 与大模型课程',descEn:'Free NLP and LLM courses',url:'https://huggingface.co/learn',tag:'free'},
-    {name:'Fast.ai',nameEn:'Fast.ai',icon:'🏎️',desc:'实用深度学习免费课程',descEn:'Practical deep learning free course',url:'https://www.fast.ai',tag:'free'},
-    {name:'DeepLearning.AI',nameEn:'DeepLearning.AI',icon:'🧠',desc:'吴恩达 AI 系列课程',descEn:'Andrew Ng AI course series',url:'https://www.deeplearning.ai',tag:'cloud'},
-    {name:'Coursera AI 课程',nameEn:'Coursera AI',icon:'🎓',desc:'系统化 AI 学习路径',descEn:'Structured AI learning paths',url:'https://www.coursera.org/browse/data-science/machine-learning',tag:'cloud'},
-    {name:'Andrej Karpathy',nameEn:'Andrej Karpathy',icon:'🧑‍💻',desc:'LLM 原理深度视频教程',descEn:'In-depth LLM principle video tutorials',url:'https://www.youtube.com/@AndrejKarpathy',tag:'free'},
-    {name:'Simon Willison Blog',nameEn:'Simon Willison Blog',icon:'📝',desc:'LLM 工具与实践深度博客',descEn:'Deep blog on LLM tools and practice',url:'https://simonwillison.net',tag:'free'},
-    {name:'Lilian Weng Blog',nameEn:'Lilian Weng Blog',icon:'📚',desc:'OpenAI 研究员技术深度博客',descEn:'Technical deep-dive blog by OpenAI researcher',url:'https://lilianweng.github.io',tag:'free'},
-    {name:'Papers With Code',nameEn:'Papers With Code',icon:'📄',desc:'AI 论文 + 代码汇总平台',descEn:'AI papers with code implementations',url:'https://paperswithcode.com',tag:'free'},
-    {name:'Arxiv AI',nameEn:'Arxiv AI',icon:'📰',desc:'最新 AI 研究论文预印本',descEn:'Latest AI research preprints',url:'https://arxiv.org/list/cs.AI/recent',tag:'free'},
-    {name:'Reddit r/LocalLLaMA',nameEn:'r/LocalLLaMA',icon:'🤖',desc:'本地 LLM 运行讨论社区',descEn:'Community for running local LLMs',url:'https://www.reddit.com/r/LocalLLaMA/',tag:'free'},
-    {name:'AI 产品榜',nameEn:'AI Product Rankings',icon:'📊',desc:'国内 AI 产品热度排行',descEn:'AI product popularity rankings in China',url:'https://aicpb.com',tag:'free'},
-    {name:'There is an AI for that',nameEn:'There is an AI for that',icon:'🔍',desc:'AI 工具搜索引擎',descEn:'Search engine for AI tools',url:'https://theresanaiforthat.com',tag:'free'},
-    {name:'Futurepedia',nameEn:'Futurepedia',icon:'🌐',desc:'全球最大 AI 工具目录',descEn:'Largest global AI tools directory',url:'https://www.futurepedia.io',tag:'free'},
-    {name:'AI Tools Directory',nameEn:'AI Tools Directory',icon:'📁',desc:'精选 AI 工具分类导航',descEn:'Curated AI tools navigation',url:'https://aitoolsdirectory.com',tag:'free'},
-  ]
-},
-{
-  id:'ai', emoji:'🤖',
-  name:'常用AI', nameEn:'Popular AI',
-  desc:'国内外知名 AI 服务商入口', descEn:'Top AI service providers worldwide',
-  items:[
-    {name:'ChatGPT',nameEn:'ChatGPT',icon:'🟢',desc:'OpenAI 旗舰对话 AI',descEn:'OpenAI flagship conversational AI',url:'https://chat.openai.com',tag:'cloud'},
-    {name:'Claude',nameEn:'Claude',icon:'🟣',desc:'Anthropic 智能助手',descEn:'Anthropic intelligent assistant',url:'https://claude.ai',tag:'cloud'},
-    {name:'Gemini',nameEn:'Gemini',icon:'💎',desc:'Google 多模态 AI',descEn:'Google multimodal AI',url:'https://gemini.google.com',tag:'cloud'},
-    {name:'Grok',nameEn:'Grok',icon:'✖️',desc:'xAI 幽默风格 AI',descEn:'xAI humor-style AI',url:'https://grok.x.ai',tag:'cloud'},
-    {name:'Copilot',nameEn:'Microsoft Copilot',icon:'🪟',desc:'微软 AI 全家桶助手',descEn:'Microsoft AI all-in-one assistant',url:'https://copilot.microsoft.com',tag:'cloud'},
-    {name:'Perplexity',nameEn:'Perplexity',icon:'🔍',desc:'AI 搜索引擎',descEn:'AI-powered search engine',url:'https://www.perplexity.ai',tag:'cloud'},
-    {name:'豆包',nameEn:'Doubao',icon:'🫘',desc:'字节旗下 AI 助手',descEn:'ByteDance AI assistant',url:'https://www.doubao.com',tag:'cloud'},
-    {name:'Kimi',nameEn:'Kimi',icon:'🌙',desc:'月之暗面长上下文 AI',descEn:'Moonshot AI long-context assistant',url:'https://kimi.moonshot.cn',tag:'cloud'},
-    {name:'腾讯元宝',nameEn:'Tencent Yuanbao',icon:'💰',desc:'腾讯 AI 助手',descEn:'Tencent AI assistant',url:'https://yuanbao.tencent.com',tag:'cloud'},
-    {name:'DeepSeek',nameEn:'DeepSeek',icon:'🐋',desc:'深度求索开源 AI',descEn:'DeepSeek open-source AI',url:'https://chat.deepseek.com',tag:'free'},
-    {name:'文心一言',nameEn:'ERNIE Bot',icon:'🐾',desc:'百度知识增强大模型',descEn:'Baidu knowledge-enhanced LLM',url:'https://yiyan.baidu.com',tag:'cloud'},
-    {name:'通义千问',nameEn:'Qwen',icon:'🟠',desc:'阿里多模态 AI',descEn:'Alibaba multimodal AI',url:'https://tongyi.aliyun.com',tag:'cloud'},
-    {name:'讯飞星火',nameEn:'iFlytek Spark',icon:'🌟',desc:'科大讯飞 AI 助手',descEn:'iFlytek AI assistant',url:'https://xinghuo.xfyun.cn',tag:'cloud'},
-    {name:'智谱清言',nameEn:'ChatGLM',icon:'🧠',desc:'智谱 AI 对话助手',descEn:'Zhipu AI conversational assistant',url:'https://chatglm.cn',tag:'cloud'},
-    {name:'MiniMax',nameEn:'MiniMax',icon:'⚡',desc:'MiniMax 多模态大模型',descEn:'MiniMax multimodal LLM',url:'https://www.minimaxi.com/',tag:'cloud'},
-    {name:'阶跃星辰',nameEn:'StepFun',icon:'🚀',desc:'Step 系列大模型',descEn:'Step series LLM',url:'https://www.stepfun.com',tag:'cloud'},
-    {name:'Mistral',nameEn:'Mistral',icon:'🌬️',desc:'欧洲开源大模型',descEn:'European open-source LLM',url:'https://mistral.ai',tag:'free'},
-    {name:'Meta AI',nameEn:'Meta AI',icon:'🦙',desc:'Meta Llama 驱动的 AI',descEn:'Meta AI powered by Llama',url:'https://ai.meta.com',tag:'cloud'},
-    {name:'Poe',nameEn:'Poe',icon:'🐦',desc:'多模型聚合对话平台',descEn:'Multi-model aggregated chat platform',url:'https://poe.com',tag:'cloud'},
-    {name:'Character.AI',nameEn:'Character.AI',icon:'🎭',desc:'角色扮演 AI 平台',descEn:'AI roleplay character platform',url:'https://character.ai',tag:'cloud'},
-    {name:'Groq',nameEn:'Groq',icon:'⚡',desc:'极速 LPU 推理服务',descEn:'Ultra-fast LPU inference service',url:'https://groq.com',tag:'free'},
-    {name:'即梦 AI',nameEn:'Jimeng AI',icon:'🎨',desc:'字节 AI 图像视频生成',descEn:'ByteDance AI image/video generation',url:'https://jimeng.jianying.com',tag:'cloud'},
-    {name:'Midjourney',nameEn:'Midjourney',icon:'🖼️',desc:'顶级 AI 图像生成工具',descEn:'Top AI image generation tool',url:'https://www.midjourney.com',tag:'cloud'},
-    {name:'DALL·E',nameEn:'DALL·E',icon:'🎨',desc:'OpenAI 图像生成模型',descEn:'OpenAI image generation model',url:'https://openai.com/dall-e-3',tag:'cloud'},
-    {name:'Stable Diffusion',nameEn:'Stable Diffusion',icon:'🌊',desc:'开源图像生成模型',descEn:'Open-source image generation model',url:'https://stability.ai',tag:'free'},
-    {name:'Suno',nameEn:'Suno',icon:'🎵',desc:'AI 音乐生成工具',descEn:'AI music generation tool',url:'https://suno.com',tag:'cloud'},
-    {name:'ElevenLabs',nameEn:'ElevenLabs',icon:'🔊',desc:'顶级 AI 语音合成',descEn:'Top AI voice synthesis',url:'https://elevenlabs.io',tag:'cloud'},
-    {name:'Runway',nameEn:'Runway',icon:'🎬',desc:'AI 视频生成与编辑',descEn:'AI video generation and editing',url:'https://runwayml.com',tag:'cloud'},
-    {name:'Monica',nameEn:'Monica',icon:'🧩',desc:'全能 AI 助手浏览器版',descEn:'All-in-one AI assistant browser edition',url:'https://monica.im',tag:'cloud'},
-    {name:'You.com',nameEn:'You.com',icon:'🎯',desc:'AI 搜索 + 对话平台',descEn:'AI search and chat platform',url:'https://you.com',tag:'cloud'},
-  ]
-},
-{
-  id:'coding', emoji:'💻',
-  name:'Coding Plan', nameEn:'Coding Plans',
-  desc:'国内外常用 Coding Plan 入口', descEn:'Top coding subscription plans worldwide',
-  items:[
-    {name:'GitHub Copilot',nameEn:'GitHub Copilot',icon:'🐙',desc:'GitHub AI 编程助手',descEn:'GitHub AI coding assistant',url:'https://github.com/features/copilot',tag:'cloud'},
-    {name:'Cursor Pro',nameEn:'Cursor Pro',icon:'🖱️',desc:'AI 优先代码编辑器订阅',descEn:'AI-first code editor subscription',url:'https://cursor.sh/pricing',tag:'cloud'},
-    {name:'Windsurf Pro',nameEn:'Windsurf Pro',icon:'🏄',desc:'Codeium AI 编辑器订阅',descEn:'Codeium AI editor subscription',url:'https://codeium.com/windsurf',tag:'cloud'},
-    {name:'阿里云 Coding Plan',nameEn:'Aliyun Coding Plan',icon:'🟠',desc:'多模型 AI 编程订阅',descEn:'Multi-model AI coding subscription',url:'https://www.aliyun.com/benefit/scene/codingplan',tag:'cloud'},
-    {name:'火山引擎 Coding Plan',nameEn:'Volcengine Coding Plan',icon:'🌋',desc:'模型自由、工具不限',descEn:'Flexible model and tool access',url:'https://www.volcengine.com/activity/codingplan',tag:'cloud'},
-    {name:'百度千帆 Coding Plan',nameEn:'Qianfan Coding Plan',icon:'🐾',desc:'兼容 Claude Code 等工具',descEn:'Compatible with Claude Code and more',url:'https://cloud.baidu.com/product/codingplan.html',tag:'cloud'},
-    {name:'Step Plan',nameEn:'Step Plan',icon:'🚀',desc:'阶跃星辰 Coding Plan',descEn:'StepFun coding subscription',url:'https://platform.stepfun.com/step-plan',tag:'cloud'},
-    {name:'智谱 Coding Plan',nameEn:'Zhipu Coding Plan',icon:'🧠',desc:'智谱 AI 编程订阅',descEn:'Zhipu AI coding subscription',url:'https://open.bigmodel.cn/',tag:'cloud'},
-    {name:'腾讯云 Coding Plan',nameEn:'Tencent Coding Plan',icon:'🔵',desc:'腾讯云 AI 编程套餐',descEn:'Tencent Cloud AI coding plan',url:'https://cloud.tencent.com/product/hunyuan',tag:'cloud'},
-    {name:'Amazon CodeWhisperer',nameEn:'Amazon CodeWhisperer',icon:'🟡',desc:'AWS AI 编程助手',descEn:'AWS AI coding assistant',url:'https://aws.amazon.com/codewhisperer/',tag:'cloud'},
-    {name:'JetBrains AI',nameEn:'JetBrains AI',icon:'🧩',desc:'JetBrains 全家桶 AI',descEn:'AI for all JetBrains IDEs',url:'https://www.jetbrains.com/ai/',tag:'cloud'},
-    {name:'Tabnine Pro',nameEn:'Tabnine Pro',icon:'🔮',desc:'AI 代码补全高级版',descEn:'AI code completion pro plan',url:'https://www.tabnine.com',tag:'cloud'},
-    {name:'Replit Core',nameEn:'Replit Core',icon:'🔁',desc:'在线 IDE + AI 编程订阅',descEn:'Online IDE with AI coding subscription',url:'https://replit.com/pricing',tag:'cloud'},
-    {name:'Cody Pro',nameEn:'Cody Pro',icon:'🔍',desc:'Sourcegraph AI 编程订阅',descEn:'Sourcegraph AI coding subscription',url:'https://sourcegraph.com/cody',tag:'cloud'},
-    {name:'Supermaven Pro',nameEn:'Supermaven Pro',icon:'🦸',desc:'极速 AI 代码补全订阅',descEn:'Ultra-fast AI code completion',url:'https://supermaven.com',tag:'cloud'},
-    {name:'Devin',nameEn:'Devin',icon:'🤖',desc:'全自主 AI 工程师订阅',descEn:'Fully autonomous AI engineer plan',url:'https://devin.ai',tag:'cloud'},
-    {name:'Pieces Pro',nameEn:'Pieces Pro',icon:'🧩',desc:'AI 代码片段管理订阅',descEn:'AI code snippet management pro',url:'https://pieces.app',tag:'cloud'},
-    {name:'Continue Pro',nameEn:'Continue Pro',icon:'🔗',desc:'开源 AI 编程插件订阅',descEn:'Open-source AI coding plugin pro',url:'https://www.continue.dev',tag:'cloud'},
-    {name:'MiniMax Coding',nameEn:'MiniMax Coding',icon:'⚡',desc:'MiniMax 编程订阅套餐',descEn:'MiniMax coding subscription plan',url:'https://www.minimaxi.com/',tag:'cloud'},
-    {name:'Kimi Coding Plan',nameEn:'Kimi Coding Plan',icon:'🌙',desc:'Kimi AI 编程订阅套餐',descEn:'Kimi AI coding subscription',url:'https://platform.moonshot.cn',tag:'cloud'},
-    {name:'Bolt.new Pro',nameEn:'Bolt.new Pro',icon:'⚡',desc:'AI 全栈生成订阅',descEn:'AI full-stack generation subscription',url:'https://bolt.new',tag:'cloud'},
-    {name:'v0 Pro',nameEn:'v0 Pro',icon:'▲',desc:'Vercel AI 组件生成订阅',descEn:'Vercel AI component generation pro',url:'https://v0.dev',tag:'cloud'},
-    {name:'Lovable Pro',nameEn:'Lovable Pro',icon:'❤️',desc:'AI Web 应用生成订阅',descEn:'AI web app generation subscription',url:'https://lovable.dev',tag:'cloud'},
-    {name:'Zed Pro',nameEn:'Zed Pro',icon:'⚡',desc:'高性能编辑器 AI 订阅',descEn:'High-performance editor AI plan',url:'https://zed.dev',tag:'cloud'},
-    {name:'Amp',nameEn:'Amp',icon:'⚡',desc:'Anthropic 新一代编码 Agent',descEn:'Anthropic next-gen coding agent',url:'https://ampcode.com',tag:'cloud'},
-    {name:'OpenHands',nameEn:'OpenHands',icon:'🤲',desc:'开源自主开发 Agent',descEn:'Open-source autonomous dev agent',url:'https://www.all-hands.dev',tag:'free'},
-    {name:'Aider',nameEn:'Aider',icon:'🤝',desc:'终端 AI 结对编程（免费）',descEn:'Terminal AI pair programming (free)',url:'https://aider.chat',tag:'free'},
-    {name:'SWE-agent',nameEn:'SWE-agent',icon:'🐛',desc:'开源自主修 Bug Agent',descEn:'Open-source autonomous bug-fix agent',url:'https://swe-agent.com',tag:'free'},
-    {name:'Codesandbox AI',nameEn:'Codesandbox AI',icon:'📦',desc:'在线沙盒 + AI 编程',descEn:'Online sandbox with AI coding',url:'https://codesandbox.io',tag:'cloud'},
-    {name:'Roo Code',nameEn:'Roo Code',icon:'🦘',desc:'VSCode 多模型 Agent（免费）',descEn:'Multi-model VSCode agent (free)',url:'https://github.com/RooVetGit/Roo-Code',tag:'free'},
-  ]
-},
-{
-  id:'maas', emoji:'🏭',
-  name:'MaaS平台', nameEn:'MaaS Platforms',
-  desc:'国内外常用 MaaS 服务商入口', descEn:'Top Model-as-a-Service providers worldwide',
-  items:[
-    {name:'阿里云百炼',nameEn:'Alibaba Bailian',icon:'🟠',desc:'企业级大模型服务平台',descEn:'Enterprise LLM service platform',url:'https://bailian.console.aliyun.com/',tag:'cloud'},
-    {name:'火山方舟',nameEn:'Volcengine Ark',icon:'🌋',desc:'模型训练推理评测全栈',descEn:'Full-stack model training, inference & eval',url:'https://www.volcengine.com/product/ark',tag:'cloud'},
-    {name:'百度千帆',nameEn:'Baidu Qianfan',icon:'🐾',desc:'以 Agent 为核心的大模型平台',descEn:'Agent-centric LLM platform',url:'https://cloud.baidu.com/product-s/qianfan_home',tag:'cloud'},
-    {name:'硅基流动',nameEn:'SiliconFlow',icon:'💎',desc:'200+ 开源商用模型统一 API',descEn:'200+ open/commercial model unified API',url:'https://www.siliconflow.cn/',tag:'cloud'},
-    {name:'讯飞星火 MaaS',nameEn:'iFlytek Spark MaaS',icon:'🌟',desc:'模型精调定制服务平台',descEn:'Model fine-tuning and custom service',url:'https://xinghuo.xfyun.cn/maas-home',tag:'cloud'},
-    {name:'OpenRouter',nameEn:'OpenRouter',icon:'🔀',desc:'AI 模型聚合统一 API',descEn:'Unified API aggregating AI models',url:'https://openrouter.ai',tag:'cloud'},
-    {name:'ZenMux',nameEn:'ZenMux',icon:'🎯',desc:'支持保险赔付的企业级聚合',descEn:'Enterprise model aggregation with insurance',url:'https://zenmux.ai/',tag:'cloud'},
-    {name:'Model123',nameEn:'Model123',icon:'🔢',desc:'专业企业级 AI 编程平台',descEn:'Professional enterprise AI coding platform',url:'https://www.model123.ai/',tag:'cloud'},
-    {name:'华为云 MaaS',nameEn:'Huawei Cloud MaaS',icon:'🌺',desc:'大模型全生命周期管理',descEn:'Full lifecycle LLM management',url:'https://www.huaweicloud.com/ai/token-service.html',tag:'cloud'},
-    {name:'腾讯混元',nameEn:'Tencent Hunyuan',icon:'🔵',desc:'腾讯大模型服务平台',descEn:'Tencent LLM service platform',url:'https://cloud.tencent.com/product/hunyuan',tag:'cloud'},
-    {name:'OpenAI API',nameEn:'OpenAI API',icon:'🟢',desc:'GPT 系列模型 API',descEn:'GPT series model API',url:'https://platform.openai.com',tag:'cloud'},
-    {name:'Anthropic API',nameEn:'Anthropic API',icon:'🟣',desc:'Claude 系列模型 API',descEn:'Claude series model API',url:'https://console.anthropic.com',tag:'cloud'},
-    {name:'Google AI Studio',nameEn:'Google AI Studio',icon:'💎',desc:'Gemini 模型 API 平台',descEn:'Gemini model API platform',url:'https://aistudio.google.com',tag:'cloud'},
-    {name:'xAI API',nameEn:'xAI API',icon:'✖️',desc:'Grok 系列模型 API',descEn:'Grok series model API',url:'https://console.x.ai',tag:'cloud'},
-    {name:'Mistral API',nameEn:'Mistral API',icon:'🌬️',desc:'欧洲开源模型 API',descEn:'European open-source model API',url:'https://console.mistral.ai',tag:'cloud'},
-    {name:'Together AI',nameEn:'Together AI',icon:'🤝',desc:'开源模型推理 API',descEn:'Open-source model inference API',url:'https://www.together.ai',tag:'cloud'},
-    {name:'Groq Cloud',nameEn:'Groq Cloud',icon:'⚡',desc:'LPU 极速推理服务',descEn:'LPU ultra-fast inference service',url:'https://console.groq.com',tag:'cloud'},
-    {name:'Replicate',nameEn:'Replicate',icon:'🔄',desc:'一键运行开源模型 API',descEn:'One-click open-source model API',url:'https://replicate.com',tag:'cloud'},
-    {name:'Hugging Face API',nameEn:'Hugging Face API',icon:'🤗',desc:'模型托管推理端点',descEn:'Model hosting inference endpoints',url:'https://huggingface.co/inference-endpoints',tag:'cloud'},
-    {name:'Cohere',nameEn:'Cohere',icon:'🔗',desc:'企业级自然语言 API',descEn:'Enterprise natural language API',url:'https://cohere.com',tag:'cloud'},
-    {name:'Deepinfra',nameEn:'Deepinfra',icon:'🔧',desc:'开源模型低价推理',descEn:'Low-cost open-source model inference',url:'https://deepinfra.com',tag:'cloud'},
-    {name:'Fireworks AI',nameEn:'Fireworks AI',icon:'🎆',desc:'快速开源模型推理',descEn:'Fast open-source model inference',url:'https://fireworks.ai',tag:'cloud'},
-    {name:'Lepton AI',nameEn:'Lepton AI',icon:'⚛️',desc:'简洁高效模型推理',descEn:'Clean and efficient model inference',url:'https://www.lepton.ai',tag:'cloud'},
-    {name:'Perplexity API',nameEn:'Perplexity API',icon:'🔍',desc:'在线搜索增强 API',descEn:'Online search-augmented API',url:'https://docs.perplexity.ai',tag:'cloud'},
-    {name:'七牛云 AI',nameEn:'Qiniu Cloud AI',icon:'🐂',desc:'多顶级模型兼容 OpenAI API',descEn:'Top models with OpenAI-compatible API',url:'https://www.qiniu.com/ai/agent',tag:'cloud'},
-    {name:'快手万擎',nameEn:'Kuaishou Wanqing',icon:'🎬',desc:'企业级大模型开发平台',descEn:'Enterprise LLM development platform',url:'https://www.streamlake.com/product/wanqing',tag:'cloud'},
-    {name:'商汤日日新',nameEn:'SenseNova',icon:'🌅',desc:'商汤大模型 API 平台',descEn:'SenseTime LLM API platform',url:'https://platform.sensenova.cn',tag:'cloud'},
-    {name:'网易有道 MaaS',nameEn:'Youdao MaaS',icon:'📚',desc:'有道大模型服务平台',descEn:'NetEase Youdao LLM service platform',url:'https://ai.youdao.com',tag:'cloud'},
-    {name:'AI21 Labs',nameEn:'AI21 Labs',icon:'🔬',desc:'Jamba 系列模型 API',descEn:'Jamba series model API',url:'https://www.ai21.com',tag:'cloud'},
-    {name:'360 智脑',nameEn:'360 AI Brain',icon:'🔒',desc:'360 大模型服务平台',descEn:'360 LLM service platform',url:'https://ai.360.com',tag:'cloud'},
-  ]
-},
-{
-  id:'skills', emoji:'🛠️',
-  name:'Skills市场', nameEn:'Skills Market',
-  desc:'常见 Skills 技能市场', descEn:'Popular skill marketplaces for AI agents',
-  items:[
-    {name:'ClawHub',nameEn:'ClawHub',icon:'🦞',desc:'OpenClaw 官方技能市场',descEn:'OpenClaw official skill marketplace',url:'https://clawhub.com',tag:'free'},
-    {name:'Smithery',nameEn:'Smithery',icon:'⚒️',desc:'MCP 技能发现安装平台',descEn:'MCP skill discovery and install platform',url:'https://smithery.ai',tag:'free'},
-    {name:'MCP.so',nameEn:'MCP.so',icon:'🔌',desc:'MCP 服务器目录',descEn:'MCP server directory',url:'https://mcp.so',tag:'free'},
-    {name:'Glama MCP',nameEn:'Glama MCP',icon:'✨',desc:'MCP 服务器发现平台',descEn:'MCP server discovery platform',url:'https://glama.ai/mcp/servers',tag:'free'},
-    {name:'PulseMCP',nameEn:'PulseMCP',icon:'💓',desc:'MCP 工具聚合目录',descEn:'MCP tools aggregated directory',url:'https://www.pulsemcp.com',tag:'free'},
-    {name:'Awesome MCP',nameEn:'Awesome MCP',icon:'⭐',desc:'精选 MCP 服务器列表',descEn:'Curated MCP server list',url:'https://github.com/punkpeye/awesome-mcp-servers',tag:'free'},
-    {name:'Composio',nameEn:'Composio',icon:'🧩',desc:'250+ 应用集成工具平台',descEn:'250+ app integration tools platform',url:'https://composio.dev',tag:'cloud'},
-    {name:'Zapier MCP',nameEn:'Zapier MCP',icon:'⚡',desc:'Zapier 推出的 MCP 接口',descEn:'Zapier MCP interface',url:'https://zapier.com/mcp',tag:'cloud'},
-    {name:'Pipedream',nameEn:'Pipedream',icon:'🌊',desc:'开发者集成工作流平台',descEn:'Developer integration workflow platform',url:'https://pipedream.com',tag:'cloud'},
-    {name:'LangChain Hub',nameEn:'LangChain Hub',icon:'🦜',desc:'LangChain 提示词技能库',descEn:'LangChain prompt skill library',url:'https://smith.langchain.com/hub',tag:'free'},
-    {name:'FlowiseAI',nameEn:'FlowiseAI',icon:'🌊',desc:'开源 LLM 工作流构建器',descEn:'Open-source LLM workflow builder',url:'https://flowiseai.com',tag:'free'},
-    {name:'Dify Market',nameEn:'Dify Market',icon:'🎯',desc:'Dify 工作流应用市场',descEn:'Dify workflow app marketplace',url:'https://cloud.dify.ai',tag:'cloud'},
-    {name:'n8n Templates',nameEn:'n8n Templates',icon:'🔁',desc:'n8n 自动化工作流模板',descEn:'n8n automation workflow templates',url:'https://n8n.io/workflows/',tag:'free'},
-    {name:'Activepieces',nameEn:'Activepieces',icon:'🧱',desc:'开源自动化工具库',descEn:'Open-source automation tools library',url:'https://www.activepieces.com',tag:'free'},
-    {name:'Rivet',nameEn:'Rivet',icon:'🔩',desc:'开源 AI 工作流 IDE',descEn:'Open-source AI workflow IDE',url:'https://rivet.ironcladapp.com',tag:'free'},
-    {name:'PromptFlow',nameEn:'PromptFlow',icon:'🌊',desc:'微软开源提示词工作流',descEn:'Microsoft open-source prompt workflow',url:'https://github.com/microsoft/promptflow',tag:'free'},
-    {name:'Hugging Face Spaces',nameEn:'HF Spaces',icon:'🤗',desc:'AI 应用和工具展示空间',descEn:'AI apps and tools showcase space',url:'https://huggingface.co/spaces',tag:'free'},
-    {name:'Replicate Models',nameEn:'Replicate Models',icon:'🔄',desc:'可调用的开源模型工具',descEn:'Callable open-source model tools',url:'https://replicate.com/explore',tag:'cloud'},
-    {name:'OpenTools',nameEn:'OpenTools',icon:'🔓',desc:'AI 工具开放目录',descEn:'Open directory of AI tools',url:'https://opentools.ai',tag:'free'},
-    {name:'Relevance AI',nameEn:'Relevance AI',icon:'🎯',desc:'无代码 AI 工具构建平台',descEn:'No-code AI tool building platform',url:'https://relevanceai.com',tag:'cloud'},
-    {name:'Stack AI',nameEn:'Stack AI',icon:'📚',desc:'企业 AI 工作流构建器',descEn:'Enterprise AI workflow builder',url:'https://www.stack-ai.com',tag:'cloud'},
-    {name:'Beam AI',nameEn:'Beam AI',icon:'✨',desc:'AI 技能自动化平台',descEn:'AI skill automation platform',url:'https://beam.ai',tag:'cloud'},
-    {name:'Botpress Hub',nameEn:'Botpress Hub',icon:'🤖',desc:'Botpress 机器人技能库',descEn:'Botpress bot skill library',url:'https://botpress.com/marketplace',tag:'cloud'},
-    {name:'Voiceflow Templates',nameEn:'Voiceflow Templates',icon:'🎙️',desc:'Voiceflow 对话流模板',descEn:'Voiceflow conversation flow templates',url:'https://www.voiceflow.com/templates',tag:'cloud'},
-    {name:'TaskingAI',nameEn:'TaskingAI',icon:'🎯',desc:'开源 AI 应用开发平台',descEn:'Open-source AI app development platform',url:'https://www.tasking.ai',tag:'free'},
-    {name:'AgentScope Hub',nameEn:'AgentScope Hub',icon:'🤝',desc:'阿里 AgentScope 技能库',descEn:'Alibaba AgentScope skill library',url:'https://agentscope.io',tag:'free'},
-    {name:'Make Templates',nameEn:'Make Templates',icon:'🔮',desc:'Make 自动化场景模板',descEn:'Make automation scenario templates',url:'https://www.make.com/en/templates',tag:'cloud'},
-    {name:'Wordware',nameEn:'Wordware',icon:'📝',desc:'自然语言 AI 应用开发',descEn:'Natural language AI app development',url:'https://www.wordware.ai',tag:'cloud'},
-    {name:'ToolBench',nameEn:'ToolBench',icon:'🔧',desc:'工具调用基准数据集',descEn:'Tool calling benchmark dataset',url:'https://github.com/OpenBMB/ToolBench',tag:'free'},
-    {name:'Crew AI Hub',nameEn:'Crew AI Hub',icon:'👥',desc:'CrewAI 多 Agent 技能市场',descEn:'CrewAI multi-agent skill marketplace',url:'https://www.crewai.com',tag:'free'},
-  ]
-},
-{
-  id:'agents', emoji:'🤖',
-  name:'Agent生态', nameEn:'Agent Ecosystem',
-  desc:'最常使用的 Agent 平台与框架', descEn:'Most popular agent platforms and frameworks',
-  items:[
-    {name:'OpenClaw',nameEn:'OpenClaw',icon:'🦞',desc:'开源本地优先 AI 助手',descEn:'Open-source local-first AI assistant',url:'https://openclaw.ai',tag:'free'},
-    {name:'Manus',nameEn:'Manus',icon:'🤲',desc:'全流程自动化 Agent',descEn:'Full-process automation agent',url:'https://manus.im',tag:'cloud'},
-    {name:'AutoGPT',nameEn:'AutoGPT',icon:'🔄',desc:'开源自主 AI Agent',descEn:'Open-source autonomous AI agent',url:'https://autogpt.net',tag:'free'},
-    {name:'CrewAI',nameEn:'CrewAI',icon:'👥',desc:'多 Agent 协作框架',descEn:'Multi-agent collaboration framework',url:'https://crewai.com',tag:'free'},
-    {name:'LangChain',nameEn:'LangChain',icon:'🦜',desc:'LLM 应用开发框架',descEn:'LLM application development framework',url:'https://langchain.com',tag:'free'},
-    {name:'LlamaIndex',nameEn:'LlamaIndex',icon:'🦙',desc:'数据增强 LLM 框架',descEn:'Data-augmented LLM framework',url:'https://llamaindex.ai',tag:'free'},
-    {name:'Dify',nameEn:'Dify',icon:'🎯',desc:'开源 LLM 应用开发平台',descEn:'Open-source LLM app development platform',url:'https://dify.ai',tag:'free'},
-    {name:'Coze',nameEn:'Coze',icon:'🤖',desc:'字节 AI Agent 开发平台',descEn:'ByteDance AI agent development platform',url:'https://www.coze.com',tag:'cloud'},
-    {name:'FastGPT',nameEn:'FastGPT',icon:'⚡',desc:'基于 LLM 知识库问答',descEn:'LLM-based knowledge base Q&A',url:'https://fastgpt.in',tag:'free'},
-    {name:'n8n',nameEn:'n8n',icon:'🔁',desc:'开源工作流自动化',descEn:'Open-source workflow automation',url:'https://n8n.io',tag:'free'},
-    {name:'Make',nameEn:'Make',icon:'🔮',desc:'可视化自动化平台',descEn:'Visual automation platform',url:'https://make.com',tag:'cloud'},
-    {name:'Zapier',nameEn:'Zapier',icon:'⚡',desc:'最大自动化集成平台',descEn:'Largest automation integration platform',url:'https://zapier.com',tag:'cloud'},
-    {name:'MetaGPT',nameEn:'MetaGPT',icon:'🧠',desc:'多 Agent 软件开发框架',descEn:'Multi-agent software development framework',url:'https://metagpt.ai',tag:'free'},
-    {name:'AgentScope',nameEn:'AgentScope',icon:'🤝',desc:'阿里多 Agent 框架',descEn:'Alibaba multi-agent framework',url:'https://agentscope.io',tag:'free'},
-    {name:'SuperAGI',nameEn:'SuperAGI',icon:'🦸',desc:'开源自主 Agent 平台',descEn:'Open-source autonomous agent platform',url:'https://superagi.com',tag:'free'},
-    {name:'Flowise',nameEn:'Flowise',icon:'🌊',desc:'开源低代码 LLM 平台',descEn:'Open-source low-code LLM platform',url:'https://flowiseai.com',tag:'free'},
-    {name:'Botpress',nameEn:'Botpress',icon:'🤖',desc:'企业级对话 AI 平台',descEn:'Enterprise conversational AI platform',url:'https://botpress.com',tag:'cloud'},
-    {name:'Voiceflow',nameEn:'Voiceflow',icon:'🎙️',desc:'AI 对话体验设计工具',descEn:'AI conversation experience design tool',url:'https://voiceflow.com',tag:'cloud'},
-    {name:'Rasa',nameEn:'Rasa',icon:'🔮',desc:'开源对话 AI 框架',descEn:'Open-source conversational AI framework',url:'https://rasa.com',tag:'free'},
-    {name:'OpenDevin',nameEn:'OpenHands',icon:'💻',desc:'开源 AI 软件工程师',descEn:'Open-source AI software engineer',url:'https://github.com/OpenDevin/OpenDevin',tag:'free'},
-    {name:'AgentGPT',nameEn:'AgentGPT',icon:'🤖',desc:'浏览器内运行 Agent',descEn:'Run agents directly in browser',url:'https://agentgpt.reworkd.ai',tag:'cloud'},
-    {name:'Genspark',nameEn:'Genspark',icon:'✨',desc:'AI 搜索 + Agent 平台',descEn:'AI search and agent platform',url:'https://www.genspark.ai',tag:'cloud'},
-    {name:'Perplexity',nameEn:'Perplexity',icon:'🔍',desc:'AI 搜索引擎 Agent',descEn:'AI search engine agent',url:'https://www.perplexity.ai',tag:'cloud'},
-    {name:'E2B',nameEn:'E2B',icon:'🖥️',desc:'AI Agent 代码执行沙盒',descEn:'Code execution sandbox for AI agents',url:'https://e2b.dev',tag:'cloud'},
-    {name:'Modal',nameEn:'Modal',icon:'☁️',desc:'云端 AI 函数执行平台',descEn:'Cloud AI function execution platform',url:'https://modal.com',tag:'cloud'},
-    {name:'Activepieces',nameEn:'Activepieces',icon:'🧱',desc:'开源自动化 Agent',descEn:'Open-source automation agent',url:'https://www.activepieces.com',tag:'free'},
-    {name:'BabyAGI',nameEn:'BabyAGI',icon:'👶',desc:'简单任务驱动 Agent',descEn:'Simple task-driven agent',url:'https://github.com/yoheinakajima/babyagi',tag:'free'},
-    {name:'Phidata',nameEn:'Phidata',icon:'🧰',desc:'构建多模态 AI Agent',descEn:'Build multimodal AI agents',url:'https://www.phidata.com',tag:'free'},
-    {name:'Semantic Kernel',nameEn:'Semantic Kernel',icon:'🔵',desc:'微软 AI 应用开发 SDK',descEn:'Microsoft AI application development SDK',url:'https://github.com/microsoft/semantic-kernel',tag:'free'},
-    {name:'Haystack',nameEn:'Haystack',icon:'🌾',desc:'开源 LLM 应用框架',descEn:'Open-source LLM application framework',url:'https://haystack.deepset.ai',tag:'free'},
-  ]
-},
-{
-  id:'payment', emoji:'💳',
-  name:'Agent支付', nameEn:'Payment Tools',
-  desc:'常见 Agent 支付工具', descEn:'Common payment tools for AI agents',
-  items:[
-    {name:'Stripe',nameEn:'Stripe',icon:'💳',desc:'全球最流行支付平台',descEn:'World most popular payment platform',url:'https://stripe.com',tag:'cloud'},
-    {name:'支付宝',nameEn:'Alipay',icon:'💙',desc:'国内主流移动支付',descEn:'Leading mobile payment in China',url:'https://www.alipay.com',tag:'cloud'},
-    {name:'微信支付',nameEn:'WeChat Pay',icon:'💚',desc:'微信生态支付工具',descEn:'WeChat ecosystem payment tool',url:'https://pay.weixin.qq.com',tag:'cloud'},
-    {name:'Paddle',nameEn:'Paddle',icon:'🏓',desc:'SaaS 软件收款平台',descEn:'SaaS software payment platform',url:'https://paddle.com',tag:'cloud'},
-    {name:'LemonSqueezy',nameEn:'LemonSqueezy',icon:'🍋',desc:'数字产品收款工具',descEn:'Digital product payment tool',url:'https://lemonsqueezy.com',tag:'cloud'},
-    {name:'Creem',nameEn:'Creem',icon:'🎯',desc:'AI 产品专属支付平台',descEn:'Payment platform for AI products',url:'https://www.creem.io',tag:'cloud'},
-    {name:'Polar',nameEn:'Polar',icon:'🐻‍❄️',desc:'开发者收款开源工具',descEn:'Open-source payment tool for developers',url:'https://polar.sh',tag:'free'},
-    {name:'RevenueCat',nameEn:'RevenueCat',icon:'🐱',desc:'订阅管理 SDK',descEn:'Subscription management SDK',url:'https://www.revenuecat.com',tag:'cloud'},
-    {name:'PayPal',nameEn:'PayPal',icon:'🔵',desc:'全球主流在线支付',descEn:'Leading global online payment',url:'https://paypal.com',tag:'cloud'},
-    {name:'Square',nameEn:'Square',icon:'⬛',desc:'线上线下一体支付',descEn:'Unified online and offline payment',url:'https://squareup.com',tag:'cloud'},
-    {name:'Braintree',nameEn:'Braintree',icon:'🌳',desc:'PayPal 旗下支付网关',descEn:'PayPal payment gateway',url:'https://www.braintreepayments.com',tag:'cloud'},
-    {name:'Adyen',nameEn:'Adyen',icon:'🌐',desc:'企业级全渠道支付',descEn:'Enterprise omnichannel payment',url:'https://www.adyen.com',tag:'cloud'},
-    {name:'Coinbase Commerce',nameEn:'Coinbase Commerce',icon:'🪙',desc:'加密货币收款',descEn:'Cryptocurrency payment acceptance',url:'https://commerce.coinbase.com',tag:'cloud'},
-    {name:'NOWPayments',nameEn:'NOWPayments',icon:'💰',desc:'加密支付聚合服务',descEn:'Crypto payment aggregation service',url:'https://nowpayments.io',tag:'cloud'},
-    {name:'Chargebee',nameEn:'Chargebee',icon:'🔄',desc:'订阅计费管理平台',descEn:'Subscription billing management platform',url:'https://www.chargebee.com',tag:'cloud'},
-    {name:'Recurly',nameEn:'Recurly',icon:'♻️',desc:'订阅管理与计费',descEn:'Subscription management and billing',url:'https://recurly.com',tag:'cloud'},
-    {name:'Lago',nameEn:'Lago',icon:'🏔️',desc:'开源计量计费平台',descEn:'Open-source metered billing platform',url:'https://www.getlago.com',tag:'free'},
-    {name:'OpenMeter',nameEn:'OpenMeter',icon:'📊',desc:'开源用量计量工具',descEn:'Open-source usage metering tool',url:'https://openmeter.io',tag:'free'},
-    {name:'Autumn',nameEn:'Autumn',icon:'🍂',desc:'AI 产品用量计费',descEn:'Usage-based billing for AI products',url:'https://useautumn.com',tag:'cloud'},
-    {name:'Orb',nameEn:'Orb',icon:'🔮',desc:'用量驱动计费平台',descEn:'Usage-driven billing platform',url:'https://withorb.com',tag:'cloud'},
-    {name:'Metronome',nameEn:'Metronome',icon:'🎵',desc:'实时计量计费引擎',descEn:'Real-time metering and billing engine',url:'https://metronome.com',tag:'cloud'},
-    {name:'Stigg',nameEn:'Stigg',icon:'⚙️',desc:'产品级订阅管理',descEn:'Product-level subscription management',url:'https://www.stigg.io',tag:'cloud'},
-    {name:'Wise',nameEn:'Wise',icon:'🌍',desc:'国际转账低手续费',descEn:'Low-fee international money transfer',url:'https://wise.com',tag:'cloud'},
-    {name:'Airwallex',nameEn:'Airwallex',icon:'✈️',desc:'跨境支付金融平台',descEn:'Cross-border payment financial platform',url:'https://www.airwallex.com',tag:'cloud'},
-    {name:'云账户',nameEn:'YunZhangHu',icon:'🇨🇳',desc:'国内灵活用工结算',descEn:'Flexible workforce payment in China',url:'https://www.yunzhanghu.com',tag:'cloud'},
-    {name:'汇付天下',nameEn:'Huifu',icon:'💱',desc:'国内跨境支付服务',descEn:'Cross-border payment service in China',url:'https://www.huifu.com',tag:'cloud'},
-    {name:'收钱吧',nameEn:'Shouqianba',icon:'💵',desc:'聚合收款解决方案',descEn:'Aggregated payment solution',url:'https://www.shouqianba.com',tag:'cloud'},
-    {name:'2Checkout',nameEn:'2Checkout',icon:'2️⃣',desc:'全球数字商品支付',descEn:'Global digital goods payment',url:'https://www.2checkout.com',tag:'cloud'},
-    {name:'Zuora',nameEn:'Zuora',icon:'🔵',desc:'企业订阅变现平台',descEn:'Enterprise subscription monetization',url:'https://zuora.com',tag:'cloud'},
-    {name:'Tinybird',nameEn:'Tinybird',icon:'🐦',desc:'实时数据计量分析',descEn:'Real-time data metering and analytics',url:'https://www.tinybird.co',tag:'cloud'},
-  ]
-},
-{
-  id:'mcp', emoji:'🔌',
-  name:'MCP工具', nameEn:'MCP Tools',
-  desc:'常见 MCP 服务商与工具', descEn:'Popular MCP servers and tools',
-  items:[
-    {name:'MCP 官方文档',nameEn:'MCP Official Docs',icon:'📖',desc:'Model Context Protocol 规范',descEn:'Model Context Protocol specification',url:'https://modelcontextprotocol.io',tag:'free'},
-    {name:'Smithery',nameEn:'Smithery',icon:'⚒️',desc:'MCP 技能发现安装平台',descEn:'MCP skill discovery and install',url:'https://smithery.ai',tag:'free'},
-    {name:'MCP.so',nameEn:'MCP.so',icon:'🔌',desc:'MCP 服务器目录',descEn:'MCP server directory',url:'https://mcp.so',tag:'free'},
-    {name:'Glama MCP',nameEn:'Glama MCP',icon:'✨',desc:'MCP 服务器发现平台',descEn:'MCP server discovery platform',url:'https://glama.ai/mcp/servers',tag:'free'},
-    {name:'PulseMCP',nameEn:'PulseMCP',icon:'💓',desc:'MCP 工具聚合目录',descEn:'MCP tools aggregated directory',url:'https://www.pulsemcp.com',tag:'free'},
-    {name:'Awesome MCP',nameEn:'Awesome MCP',icon:'⭐',desc:'精选 MCP 服务器列表',descEn:'Curated MCP server list',url:'https://github.com/punkpeye/awesome-mcp-servers',tag:'free'},
-    {name:'Zapier MCP',nameEn:'Zapier MCP',icon:'⚡',desc:'6000+ 应用 MCP 接口',descEn:'MCP interface for 6000+ apps',url:'https://zapier.com/mcp',tag:'cloud'},
-    {name:'Composio MCP',nameEn:'Composio MCP',icon:'🧩',desc:'250+ 应用集成 MCP',descEn:'250+ app integration MCP',url:'https://composio.dev',tag:'cloud'},
-    {name:'Browserbase',nameEn:'Browserbase',icon:'🌐',desc:'云端浏览器 MCP',descEn:'Cloud browser MCP',url:'https://browserbase.com',tag:'cloud'},
-    {name:'Firecrawl',nameEn:'Firecrawl',icon:'🔥',desc:'网页抓取 MCP 工具',descEn:'Web scraping MCP tool',url:'https://firecrawl.dev',tag:'cloud'},
-    {name:'Exa',nameEn:'Exa',icon:'🔍',desc:'AI 搜索 MCP 接口',descEn:'AI search MCP interface',url:'https://exa.ai',tag:'cloud'},
-    {name:'Tavily',nameEn:'Tavily',icon:'🔎',desc:'AI 搜索 API MCP',descEn:'AI search API MCP',url:'https://tavily.com',tag:'cloud'},
-    {name:'Context7',nameEn:'Context7',icon:'7️⃣',desc:'最新文档上下文 MCP',descEn:'Up-to-date docs context MCP',url:'https://context7.com',tag:'free'},
-    {name:'Neon MCP',nameEn:'Neon MCP',icon:'🐘',desc:'Postgres 数据库 MCP',descEn:'Postgres database MCP',url:'https://neon.tech',tag:'cloud'},
-    {name:'Supabase MCP',nameEn:'Supabase MCP',icon:'⚡',desc:'Supabase 数据库 MCP',descEn:'Supabase database MCP',url:'https://supabase.com',tag:'cloud'},
-    {name:'GitHub MCP',nameEn:'GitHub MCP',icon:'🐙',desc:'GitHub 操作 MCP',descEn:'GitHub operations MCP',url:'https://github.com/github/github-mcp-server',tag:'free'},
-    {name:'Cloudflare MCP',nameEn:'Cloudflare MCP',icon:'🔥',desc:'Cloudflare 服务 MCP',descEn:'Cloudflare services MCP',url:'https://developers.cloudflare.com/mcp-server',tag:'free'},
-    {name:'Stripe MCP',nameEn:'Stripe MCP',icon:'💳',desc:'Stripe 支付 MCP',descEn:'Stripe payment MCP',url:'https://stripe.com/docs/stripe-mcp',tag:'cloud'},
-    {name:'Linear MCP',nameEn:'Linear MCP',icon:'📋',desc:'Linear 项目管理 MCP',descEn:'Linear project management MCP',url:'https://linear.app',tag:'cloud'},
-    {name:'Notion MCP',nameEn:'Notion MCP',icon:'📝',desc:'Notion 文档 MCP',descEn:'Notion document MCP',url:'https://notion.so',tag:'cloud'},
-    {name:'Slack MCP',nameEn:'Slack MCP',icon:'💬',desc:'Slack 消息 MCP',descEn:'Slack messaging MCP',url:'https://slack.com',tag:'cloud'},
-    {name:'Google Drive MCP',nameEn:'Google Drive MCP',icon:'📁',desc:'谷歌云盘 MCP',descEn:'Google Drive MCP',url:'https://drive.google.com',tag:'cloud'},
-    {name:'Brave Search MCP',nameEn:'Brave Search MCP',icon:'🦁',desc:'Brave 网页搜索 MCP',descEn:'Brave web search MCP',url:'https://brave.com/search/api/',tag:'cloud'},
-    {name:'Fetch MCP',nameEn:'Fetch MCP',icon:'🌐',desc:'网页内容抓取 MCP',descEn:'Web content fetching MCP',url:'https://github.com/modelcontextprotocol/servers',tag:'free'},
-    {name:'Filesystem MCP',nameEn:'Filesystem MCP',icon:'📂',desc:'本地文件系统 MCP',descEn:'Local filesystem MCP',url:'https://github.com/modelcontextprotocol/servers',tag:'free'},
-    {name:'Memory MCP',nameEn:'Memory MCP',icon:'🧠',desc:'持久化记忆 MCP',descEn:'Persistent memory MCP',url:'https://github.com/modelcontextprotocol/servers',tag:'free'},
-    {name:'Playwright MCP',nameEn:'Playwright MCP',icon:'🎭',desc:'浏览器自动化 MCP',descEn:'Browser automation MCP',url:'https://github.com/microsoft/playwright-mcp',tag:'free'},
-    {name:'Puppeteer MCP',nameEn:'Puppeteer MCP',icon:'🤖',desc:'Puppeteer 浏览器 MCP',descEn:'Puppeteer browser MCP',url:'https://github.com/modelcontextprotocol/servers',tag:'free'},
-    {name:'mcporter',nameEn:'mcporter',icon:'🦞',desc:'OpenClaw 本地 MCP 管理',descEn:'OpenClaw local MCP manager',url:'https://clawhub.com',tag:'free'},
-    {name:'MCP Hub',nameEn:'MCP Hub',icon:'🔌',desc:'本地 MCP 服务器管理器',descEn:'Local MCP server manager',url:'https://github.com/ravitemer/mcphub.nvim',tag:'free'},
-  ]
-},
+  {
+    "id": "variants",
+    "emoji": "🦞",
+    "name": "变种虾",
+    "nameEn": "Variants",
+    "desc": "国内外知名 OpenClaw 变种产品",
+    "descEn": "Notable OpenClaw variants worldwide",
+    "items": [
+      {
+        "name": "OpenClaw 官方",
+        "nameEn": "OpenClaw Official",
+        "icon": "🦞",
+        "desc": "开源、本地优先的自主 AI 助手",
+        "descEn": "Open-source, local-first autonomous AI assistant",
+        "url": "https://openclaw.ai",
+        "tag": "local"
+      },
+      {
+        "name": "Kimi Claw",
+        "nameEn": "Kimi Claw",
+        "icon": "🌙",
+        "desc": "集成 OpenClaw 框架的 Kimi 云端版",
+        "descEn": "Kimi cloud version with OpenClaw integration",
+        "url": "https://www.kimi.com/bot",
+        "tag": "cloud"
+      },
+      {
+        "name": "MaxClaw",
+        "nameEn": "MaxClaw",
+        "icon": "⚡",
+        "desc": "10 秒完成 OpenClaw 云端部署",
+        "descEn": "Deploy OpenClaw to cloud in 10 seconds",
+        "url": "https://agent.minimaxi.com/max-claw",
+        "tag": "cloud"
+      },
+      {
+        "name": "飞书 OpenClaw",
+        "nameEn": "Feishu OpenClaw",
+        "icon": "📋",
+        "desc": "原版 OpenClaw 能力 + 飞书插件",
+        "descEn": "Full OpenClaw + Feishu official plugin",
+        "url": "https://openclaw.feishu.cn/home",
+        "tag": "cloud"
+      },
+      {
+        "name": "ArkClaw",
+        "nameEn": "ArkClaw",
+        "icon": "🌋",
+        "desc": "火山引擎云端 OpenClaw 版本",
+        "descEn": "Volcengine cloud OpenClaw edition",
+        "url": "https://www.volcengine.com/experience/ark?mode=claw",
+        "tag": "cloud"
+      },
+      {
+        "name": "扣子 Coze",
+        "nameEn": "Coze",
+        "icon": "🤖",
+        "desc": "字节 AI Agent 平台",
+        "descEn": "ByteDance AI Agent platform",
+        "url": "https://code.coze.cn/home",
+        "tag": "cloud"
+      },
+      {
+        "name": "DuClaw",
+        "nameEn": "DuClaw",
+        "icon": "🐾",
+        "desc": "百度即开即用智能体",
+        "descEn": "Baidu ready-to-use AI agent",
+        "url": "https://cloud.baidu.com/product/duclaw.html",
+        "tag": "cloud"
+      },
+      {
+        "name": "MiMo Claw",
+        "nameEn": "MiMo Claw",
+        "icon": "📱",
+        "desc": "小米大模型 OpenClaw",
+        "descEn": "Xiaomi LLM OpenClaw edition",
+        "url": "https://aistudio.xiaomimimo.com/",
+        "tag": "cloud"
+      },
+      {
+        "name": "StepClaw",
+        "nameEn": "StepClaw",
+        "icon": "🚀",
+        "desc": "阶跃星辰云端助手",
+        "descEn": "StepFun cloud AI assistant",
+        "url": "https://www.stepfun.com/openclaw",
+        "tag": "cloud"
+      },
+      {
+        "name": "AstronClaw",
+        "nameEn": "AstronClaw",
+        "icon": "🌟",
+        "desc": "讯飞一键部署版本",
+        "descEn": "iFlytek one-click deploy edition",
+        "url": "https://agent.xfyun.cn/astron-claw",
+        "tag": "cloud"
+      },
+      {
+        "name": "Claude Code",
+        "nameEn": "Claude Code",
+        "icon": "🟣",
+        "desc": "Anthropic 终端编程 Agent",
+        "descEn": "Anthropic terminal coding agent",
+        "url": "https://claude.ai/code",
+        "tag": "cloud"
+      },
+      {
+        "name": "Codex CLI",
+        "nameEn": "Codex CLI",
+        "icon": "🟢",
+        "desc": "OpenAI 终端编程助手",
+        "descEn": "OpenAI terminal coding assistant",
+        "url": "https://github.com/openai/codex",
+        "tag": "free"
+      },
+      {
+        "name": "Gemini CLI",
+        "nameEn": "Gemini CLI",
+        "icon": "💎",
+        "desc": "Google Gemini 终端版",
+        "descEn": "Google Gemini terminal edition",
+        "url": "https://github.com/google-gemini/gemini-cli",
+        "tag": "free"
+      },
+      {
+        "name": "OpenHands",
+        "nameEn": "OpenHands",
+        "icon": "🤲",
+        "desc": "开源自主软件开发 Agent",
+        "descEn": "Open-source autonomous software dev agent",
+        "url": "https://www.all-hands.dev",
+        "tag": "free"
+      },
+      {
+        "name": "Amp",
+        "nameEn": "Amp",
+        "icon": "⚡",
+        "desc": "Anthropic 新一代编码 Agent",
+        "descEn": "Anthropic next-gen coding agent",
+        "url": "https://ampcode.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Cline",
+        "nameEn": "Cline",
+        "icon": "🖥️",
+        "desc": "VSCode AI 自主编程 Agent",
+        "descEn": "Autonomous AI coding agent for VSCode",
+        "url": "https://github.com/cline/cline",
+        "tag": "free"
+      },
+      {
+        "name": "Roo Code",
+        "nameEn": "Roo Code",
+        "icon": "🦘",
+        "desc": "VSCode 多模型编程 Agent",
+        "descEn": "Multi-model coding agent for VSCode",
+        "url": "https://github.com/RooVetGit/Roo-Code",
+        "tag": "free"
+      },
+      {
+        "name": "Aider",
+        "nameEn": "Aider",
+        "icon": "🤝",
+        "desc": "终端 AI 结对编程工具",
+        "descEn": "AI pair programming in your terminal",
+        "url": "https://aider.chat",
+        "tag": "free"
+      },
+      {
+        "name": "Continue",
+        "nameEn": "Continue",
+        "icon": "🔗",
+        "desc": "开源 AI 编程插件",
+        "descEn": "Open-source AI coding plugin",
+        "url": "https://www.continue.dev",
+        "tag": "free"
+      },
+      {
+        "name": "Devin",
+        "nameEn": "Devin",
+        "icon": "🤖",
+        "desc": "全自主 AI 软件工程师",
+        "descEn": "Fully autonomous AI software engineer",
+        "url": "https://devin.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "SWE-agent",
+        "nameEn": "SWE-agent",
+        "icon": "🐛",
+        "desc": "开源自主 Bug 修复 Agent",
+        "descEn": "Open-source autonomous bug-fix agent",
+        "url": "https://swe-agent.com",
+        "tag": "free"
+      }
+    ]
+  },
+  {
+    "id": "cloud",
+    "emoji": "☁️",
+    "name": "云端虾",
+    "nameEn": "Cloud Hosting",
+    "desc": "国内外可部署 OpenClaw 的云服务",
+    "descEn": "Cloud services to deploy OpenClaw",
+    "items": [
+      {
+        "name": "阿里云",
+        "nameEn": "Alibaba Cloud",
+        "icon": "🟠",
+        "desc": "国内最大云平台，生态完整",
+        "descEn": "Largest cloud platform in China",
+        "url": "https://www.aliyun.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "腾讯云",
+        "nameEn": "Tencent Cloud",
+        "icon": "🔵",
+        "desc": "腾讯旗下云服务，国内稳定",
+        "descEn": "Tencent cloud services, stable in China",
+        "url": "https://cloud.tencent.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "华为云",
+        "nameEn": "Huawei Cloud",
+        "icon": "🌺",
+        "desc": "华为企业级云服务",
+        "descEn": "Huawei enterprise cloud services",
+        "url": "https://www.huaweicloud.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "AWS",
+        "nameEn": "AWS",
+        "icon": "🟡",
+        "desc": "全球最大云平台，功能最全",
+        "descEn": "World largest cloud, most features",
+        "url": "https://aws.amazon.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Google Cloud",
+        "nameEn": "Google Cloud",
+        "icon": "🌈",
+        "desc": "与 AI 服务深度集成",
+        "descEn": "Deeply integrated with Google AI",
+        "url": "https://cloud.google.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Azure",
+        "nameEn": "Azure",
+        "icon": "🔷",
+        "desc": "微软云，企业级可靠",
+        "descEn": "Microsoft cloud, enterprise-grade",
+        "url": "https://azure.microsoft.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "DigitalOcean",
+        "nameEn": "DigitalOcean",
+        "icon": "🌊",
+        "desc": "开发者友好，价格实惠",
+        "descEn": "Developer-friendly, affordable pricing",
+        "url": "https://www.digitalocean.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Vultr",
+        "nameEn": "Vultr",
+        "icon": "⚡",
+        "desc": "高性价比，全球节点丰富",
+        "descEn": "High value, global node coverage",
+        "url": "https://www.vultr.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Hetzner",
+        "nameEn": "Hetzner",
+        "icon": "🇩🇪",
+        "desc": "欧洲高性价比云服务器",
+        "descEn": "High-value European cloud servers",
+        "url": "https://www.hetzner.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Linode",
+        "nameEn": "Linode (Akamai)",
+        "icon": "🟩",
+        "desc": "简洁易用的 VPS 服务",
+        "descEn": "Simple and easy VPS service",
+        "url": "https://www.linode.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Vercel",
+        "nameEn": "Vercel",
+        "icon": "▲",
+        "desc": "前端部署首选平台",
+        "descEn": "Top platform for frontend deployment",
+        "url": "https://vercel.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Netlify",
+        "nameEn": "Netlify",
+        "icon": "🌿",
+        "desc": "静态站点与无服务器部署",
+        "descEn": "Static site and serverless deployment",
+        "url": "https://netlify.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Railway",
+        "nameEn": "Railway",
+        "icon": "🚂",
+        "desc": "极简后端部署平台",
+        "descEn": "Minimal backend deployment platform",
+        "url": "https://railway.app",
+        "tag": "cloud"
+      },
+      {
+        "name": "Render",
+        "nameEn": "Render",
+        "icon": "🎨",
+        "desc": "全栈应用托管平台",
+        "descEn": "Full-stack app hosting platform",
+        "url": "https://render.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Fly.io",
+        "nameEn": "Fly.io",
+        "icon": "🪰",
+        "desc": "边缘计算应用部署",
+        "descEn": "Edge computing app deployment",
+        "url": "https://fly.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "Porter",
+        "nameEn": "Porter",
+        "icon": "🎒",
+        "desc": "基于 Kubernetes 的简化部署",
+        "descEn": "Simplified Kubernetes-based deployment",
+        "url": "https://porter.run",
+        "tag": "cloud"
+      },
+      {
+        "name": "Zeabur",
+        "nameEn": "Zeabur",
+        "icon": "🟣",
+        "desc": "一键部署各类应用",
+        "descEn": "One-click app deployment",
+        "url": "https://zeabur.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Sealos",
+        "nameEn": "Sealos",
+        "icon": "🦭",
+        "desc": "国内 K8s 云操作系统",
+        "descEn": "K8s-based cloud OS, China-based",
+        "url": "https://sealos.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "1Panel",
+        "nameEn": "1Panel",
+        "icon": "🖥️",
+        "desc": "开源 Linux 服务器管理面板",
+        "descEn": "Open-source Linux server management panel",
+        "url": "https://1panel.cn",
+        "tag": "free"
+      },
+      {
+        "name": "Coolify",
+        "nameEn": "Coolify",
+        "icon": "❄️",
+        "desc": "开源自托管 Heroku 替代",
+        "descEn": "Open-source self-hosted Heroku alternative",
+        "url": "https://coolify.io",
+        "tag": "free"
+      },
+      {
+        "name": "Dokploy",
+        "nameEn": "Dokploy",
+        "icon": "🚀",
+        "desc": "开源 PaaS 部署工具",
+        "descEn": "Open-source PaaS deployment tool",
+        "url": "https://dokploy.com",
+        "tag": "free"
+      },
+      {
+        "name": "CapRover",
+        "nameEn": "CapRover",
+        "icon": "⚓",
+        "desc": "免费开源 PaaS 平台",
+        "descEn": "Free open-source PaaS platform",
+        "url": "https://caprover.com",
+        "tag": "free"
+      },
+      {
+        "name": "Oracle Cloud",
+        "nameEn": "Oracle Cloud",
+        "icon": "🔴",
+        "desc": "永久免费套餐可用",
+        "descEn": "Always-free tier available",
+        "url": "https://www.oracle.com/cloud/",
+        "tag": "free"
+      },
+      {
+        "name": "Cloudflare Workers",
+        "nameEn": "Cloudflare Workers",
+        "icon": "🔥",
+        "desc": "边缘无服务器计算平台",
+        "descEn": "Edge serverless computing platform",
+        "url": "https://workers.cloudflare.com",
+        "tag": "free"
+      },
+      {
+        "name": "Supabase",
+        "nameEn": "Supabase",
+        "icon": "⚡",
+        "desc": "开源 Firebase 替代品",
+        "descEn": "Open-source Firebase alternative",
+        "url": "https://supabase.com",
+        "tag": "free"
+      },
+      {
+        "name": "PlanetScale",
+        "nameEn": "PlanetScale",
+        "icon": "🪐",
+        "desc": "无服务器 MySQL 平台",
+        "descEn": "Serverless MySQL platform",
+        "url": "https://planetscale.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Neon",
+        "nameEn": "Neon",
+        "icon": "🐘",
+        "desc": "无服务器 Postgres 平台",
+        "descEn": "Serverless Postgres platform",
+        "url": "https://neon.tech",
+        "tag": "free"
+      },
+      {
+        "name": "Upstash",
+        "nameEn": "Upstash",
+        "icon": "🟢",
+        "desc": "无服务器 Redis & Kafka",
+        "descEn": "Serverless Redis and Kafka",
+        "url": "https://upstash.com",
+        "tag": "free"
+      },
+      {
+        "name": "百度智能云",
+        "nameEn": "Baidu Cloud",
+        "icon": "🐾",
+        "desc": "百度云服务，AI 能力强",
+        "descEn": "Baidu cloud with strong AI capabilities",
+        "url": "https://cloud.baidu.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "移动云",
+        "nameEn": "China Mobile Cloud",
+        "icon": "📱",
+        "desc": "中国移动云计算服务",
+        "descEn": "China Mobile cloud computing",
+        "url": "https://ecloud.10086.cn",
+        "tag": "cloud"
+      }
+    ]
+  },
+  {
+    "id": "tutorials",
+    "emoji": "📚",
+    "name": "教程虾",
+    "nameEn": "Tutorials",
+    "desc": "从部署到调优的各类教程",
+    "descEn": "Guides from deployment to fine-tuning",
+    "items": [
+      {
+        "name": "OpenClaw 官方文档",
+        "nameEn": "OpenClaw Docs",
+        "icon": "📖",
+        "desc": "官方完整文档与入门指南",
+        "descEn": "Official full docs and getting started",
+        "url": "https://docs.openclaw.ai",
+        "tag": "free"
+      },
+      {
+        "name": "OpenClaw GitHub",
+        "nameEn": "OpenClaw GitHub",
+        "icon": "🐙",
+        "desc": "源码、Issues、讨论区",
+        "descEn": "Source code, issues and discussions",
+        "url": "https://github.com/openclaw/openclaw",
+        "tag": "free"
+      },
+      {
+        "name": "OpenClaw Discord",
+        "nameEn": "OpenClaw Discord",
+        "icon": "💬",
+        "desc": "官方社区，实时交流",
+        "descEn": "Official community for real-time chat",
+        "url": "https://discord.com/invite/clawd",
+        "tag": "free"
+      },
+      {
+        "name": "ClawHub",
+        "nameEn": "ClawHub",
+        "icon": "🦞",
+        "desc": "Skills 发现与安装平台",
+        "descEn": "Skill discovery and install platform",
+        "url": "https://clawhub.com",
+        "tag": "free"
+      },
+      {
+        "name": "掘金 OpenClaw 专栏",
+        "nameEn": "Juejin OpenClaw",
+        "icon": "💎",
+        "desc": "掘金社区 OpenClaw 文章合集",
+        "descEn": "OpenClaw articles on Juejin",
+        "url": "https://juejin.cn/search?query=OpenClaw",
+        "tag": "free"
+      },
+      {
+        "name": "知乎 OpenClaw 话题",
+        "nameEn": "Zhihu OpenClaw",
+        "icon": "🔍",
+        "desc": "知乎 OpenClaw 讨论汇总",
+        "descEn": "OpenClaw discussions on Zhihu",
+        "url": "https://www.zhihu.com/search?q=OpenClaw",
+        "tag": "free"
+      },
+      {
+        "name": "B站 OpenClaw",
+        "nameEn": "Bilibili OpenClaw",
+        "icon": "📺",
+        "desc": "B 站 OpenClaw 视频教程",
+        "descEn": "OpenClaw video tutorials on Bilibili",
+        "url": "https://search.bilibili.com/all?keyword=OpenClaw",
+        "tag": "free"
+      },
+      {
+        "name": "YouTube OpenClaw",
+        "nameEn": "YouTube OpenClaw",
+        "icon": "▶️",
+        "desc": "YouTube OpenClaw 英文教程",
+        "descEn": "English OpenClaw tutorials on YouTube",
+        "url": "https://www.youtube.com/results?search_query=OpenClaw+AI",
+        "tag": "free"
+      },
+      {
+        "name": "部署入门指南",
+        "nameEn": "Deployment Guide",
+        "icon": "🖥️",
+        "desc": "从零开始部署 OpenClaw",
+        "descEn": "Deploy OpenClaw from scratch",
+        "url": "https://docs.openclaw.ai/get-started/install/",
+        "tag": "free"
+      },
+      {
+        "name": "Skills 开发指南",
+        "nameEn": "Skills Dev Guide",
+        "icon": "🛠️",
+        "desc": "如何为 OpenClaw 编写技能",
+        "descEn": "How to write OpenClaw skills",
+        "url": "https://docs.openclaw.ai/context/rules",
+        "tag": "free"
+      },
+      {
+        "name": "配置调优指南",
+        "nameEn": "Config & Tuning",
+        "icon": "⚙️",
+        "desc": "高级配置与性能调优",
+        "descEn": "Advanced config and performance tuning",
+        "url": "https://docs.openclaw.ai/settings",
+        "tag": "free"
+      },
+      {
+        "name": "MCP 集成教程",
+        "nameEn": "MCP Integration",
+        "icon": "🔌",
+        "desc": "如何在 OpenClaw 中接入 MCP",
+        "descEn": "How to integrate MCP with OpenClaw",
+        "url": "https://docs.openclaw.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Anthropic 提示词指南",
+        "nameEn": "Anthropic Prompt Guide",
+        "icon": "🟣",
+        "desc": "Claude 提示词工程最佳实践",
+        "descEn": "Claude prompt engineering best practices",
+        "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+        "tag": "free"
+      },
+      {
+        "name": "OpenAI 提示词指南",
+        "nameEn": "OpenAI Prompt Guide",
+        "icon": "🟢",
+        "desc": "GPT 提示词工程官方教程",
+        "descEn": "Official GPT prompt engineering guide",
+        "url": "https://platform.openai.com/docs/guides/prompt-engineering",
+        "tag": "free"
+      },
+      {
+        "name": "LangChain 教程",
+        "nameEn": "LangChain Docs",
+        "icon": "🦜",
+        "desc": "LLM 应用开发框架文档",
+        "descEn": "LLM application framework docs",
+        "url": "https://python.langchain.com/docs/",
+        "tag": "free"
+      },
+      {
+        "name": "LlamaIndex 教程",
+        "nameEn": "LlamaIndex Docs",
+        "icon": "🦙",
+        "desc": "数据增强 LLM 框架文档",
+        "descEn": "Data-augmented LLM framework docs",
+        "url": "https://docs.llamaindex.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Hugging Face 教程",
+        "nameEn": "Hugging Face Course",
+        "icon": "🤗",
+        "desc": "免费 NLP 与大模型课程",
+        "descEn": "Free NLP and LLM courses",
+        "url": "https://huggingface.co/learn",
+        "tag": "free"
+      },
+      {
+        "name": "Fast.ai",
+        "nameEn": "Fast.ai",
+        "icon": "🏎️",
+        "desc": "实用深度学习免费课程",
+        "descEn": "Practical deep learning free course",
+        "url": "https://www.fast.ai",
+        "tag": "free"
+      },
+      {
+        "name": "DeepLearning.AI",
+        "nameEn": "DeepLearning.AI",
+        "icon": "🧠",
+        "desc": "吴恩达 AI 系列课程",
+        "descEn": "Andrew Ng AI course series",
+        "url": "https://www.deeplearning.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Coursera AI 课程",
+        "nameEn": "Coursera AI",
+        "icon": "🎓",
+        "desc": "系统化 AI 学习路径",
+        "descEn": "Structured AI learning paths",
+        "url": "https://www.coursera.org/browse/data-science/machine-learning",
+        "tag": "cloud"
+      },
+      {
+        "name": "Andrej Karpathy",
+        "nameEn": "Andrej Karpathy",
+        "icon": "🧑‍💻",
+        "desc": "LLM 原理深度视频教程",
+        "descEn": "In-depth LLM principle video tutorials",
+        "url": "https://www.youtube.com/@AndrejKarpathy",
+        "tag": "free"
+      },
+      {
+        "name": "Simon Willison Blog",
+        "nameEn": "Simon Willison Blog",
+        "icon": "📝",
+        "desc": "LLM 工具与实践深度博客",
+        "descEn": "Deep blog on LLM tools and practice",
+        "url": "https://simonwillison.net",
+        "tag": "free"
+      },
+      {
+        "name": "Lilian Weng Blog",
+        "nameEn": "Lilian Weng Blog",
+        "icon": "📚",
+        "desc": "OpenAI 研究员技术深度博客",
+        "descEn": "Technical deep-dive blog by OpenAI researcher",
+        "url": "https://lilianweng.github.io",
+        "tag": "free"
+      },
+      {
+        "name": "Papers With Code",
+        "nameEn": "Papers With Code",
+        "icon": "📄",
+        "desc": "AI 论文 + 代码汇总平台",
+        "descEn": "AI papers with code implementations",
+        "url": "https://paperswithcode.com",
+        "tag": "free"
+      },
+      {
+        "name": "Arxiv AI",
+        "nameEn": "Arxiv AI",
+        "icon": "📰",
+        "desc": "最新 AI 研究论文预印本",
+        "descEn": "Latest AI research preprints",
+        "url": "https://arxiv.org/list/cs.AI/recent",
+        "tag": "free"
+      },
+      {
+        "name": "Reddit r/LocalLLaMA",
+        "nameEn": "r/LocalLLaMA",
+        "icon": "🤖",
+        "desc": "本地 LLM 运行讨论社区",
+        "descEn": "Community for running local LLMs",
+        "url": "https://www.reddit.com/r/LocalLLaMA/",
+        "tag": "free"
+      },
+      {
+        "name": "AI 产品榜",
+        "nameEn": "AI Product Rankings",
+        "icon": "📊",
+        "desc": "国内 AI 产品热度排行",
+        "descEn": "AI product popularity rankings in China",
+        "url": "https://aicpb.com",
+        "tag": "free"
+      },
+      {
+        "name": "There is an AI for that",
+        "nameEn": "There is an AI for that",
+        "icon": "🔍",
+        "desc": "AI 工具搜索引擎",
+        "descEn": "Search engine for AI tools",
+        "url": "https://theresanaiforthat.com",
+        "tag": "free"
+      },
+      {
+        "name": "Futurepedia",
+        "nameEn": "Futurepedia",
+        "icon": "🌐",
+        "desc": "全球最大 AI 工具目录",
+        "descEn": "Largest global AI tools directory",
+        "url": "https://www.futurepedia.io",
+        "tag": "free"
+      },
+      {
+        "name": "AI Tools Directory",
+        "nameEn": "AI Tools Directory",
+        "icon": "📁",
+        "desc": "精选 AI 工具分类导航",
+        "descEn": "Curated AI tools navigation",
+        "url": "https://aitoolsdirectory.com",
+        "tag": "free"
+      }
+    ]
+  },
+  {
+    "id": "ai",
+    "emoji": "🤖",
+    "name": "常用AI",
+    "nameEn": "Popular AI",
+    "desc": "国内外知名 AI 服务商入口",
+    "descEn": "Top AI service providers worldwide",
+    "items": [
+      {
+        "name": "ChatGPT",
+        "nameEn": "ChatGPT",
+        "icon": "🟢",
+        "desc": "OpenAI 旗舰对话 AI",
+        "descEn": "OpenAI flagship conversational AI",
+        "url": "https://chat.openai.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Claude",
+        "nameEn": "Claude",
+        "icon": "🟣",
+        "desc": "Anthropic 智能助手",
+        "descEn": "Anthropic intelligent assistant",
+        "url": "https://claude.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Gemini",
+        "nameEn": "Gemini",
+        "icon": "💎",
+        "desc": "Google 多模态 AI",
+        "descEn": "Google multimodal AI",
+        "url": "https://gemini.google.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Grok",
+        "nameEn": "Grok",
+        "icon": "✖️",
+        "desc": "xAI 幽默风格 AI",
+        "descEn": "xAI humor-style AI",
+        "url": "https://grok.x.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Copilot",
+        "nameEn": "Microsoft Copilot",
+        "icon": "🪟",
+        "desc": "微软 AI 全家桶助手",
+        "descEn": "Microsoft AI all-in-one assistant",
+        "url": "https://copilot.microsoft.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Perplexity",
+        "nameEn": "Perplexity",
+        "icon": "🔍",
+        "desc": "AI 搜索引擎",
+        "descEn": "AI-powered search engine",
+        "url": "https://www.perplexity.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "豆包",
+        "nameEn": "Doubao",
+        "icon": "🫘",
+        "desc": "字节旗下 AI 助手",
+        "descEn": "ByteDance AI assistant",
+        "url": "https://www.doubao.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Kimi",
+        "nameEn": "Kimi",
+        "icon": "🌙",
+        "desc": "月之暗面长上下文 AI",
+        "descEn": "Moonshot AI long-context assistant",
+        "url": "https://kimi.moonshot.cn",
+        "tag": "cloud"
+      },
+      {
+        "name": "腾讯元宝",
+        "nameEn": "Tencent Yuanbao",
+        "icon": "💰",
+        "desc": "腾讯 AI 助手",
+        "descEn": "Tencent AI assistant",
+        "url": "https://yuanbao.tencent.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "DeepSeek",
+        "nameEn": "DeepSeek",
+        "icon": "🐋",
+        "desc": "深度求索开源 AI",
+        "descEn": "DeepSeek open-source AI",
+        "url": "https://chat.deepseek.com",
+        "tag": "free"
+      },
+      {
+        "name": "文心一言",
+        "nameEn": "ERNIE Bot",
+        "icon": "🐾",
+        "desc": "百度知识增强大模型",
+        "descEn": "Baidu knowledge-enhanced LLM",
+        "url": "https://yiyan.baidu.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "通义千问",
+        "nameEn": "Qwen",
+        "icon": "🟠",
+        "desc": "阿里多模态 AI",
+        "descEn": "Alibaba multimodal AI",
+        "url": "https://tongyi.aliyun.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "讯飞星火",
+        "nameEn": "iFlytek Spark",
+        "icon": "🌟",
+        "desc": "科大讯飞 AI 助手",
+        "descEn": "iFlytek AI assistant",
+        "url": "https://xinghuo.xfyun.cn",
+        "tag": "cloud"
+      },
+      {
+        "name": "智谱清言",
+        "nameEn": "ChatGLM",
+        "icon": "🧠",
+        "desc": "智谱 AI 对话助手",
+        "descEn": "Zhipu AI conversational assistant",
+        "url": "https://chatglm.cn",
+        "tag": "cloud"
+      },
+      {
+        "name": "MiniMax",
+        "nameEn": "MiniMax",
+        "icon": "⚡",
+        "desc": "MiniMax 多模态大模型",
+        "descEn": "MiniMax multimodal LLM",
+        "url": "https://www.minimaxi.com/",
+        "tag": "cloud"
+      },
+      {
+        "name": "阶跃星辰",
+        "nameEn": "StepFun",
+        "icon": "🚀",
+        "desc": "Step 系列大模型",
+        "descEn": "Step series LLM",
+        "url": "https://www.stepfun.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Mistral",
+        "nameEn": "Mistral",
+        "icon": "🌬️",
+        "desc": "欧洲开源大模型",
+        "descEn": "European open-source LLM",
+        "url": "https://mistral.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Meta AI",
+        "nameEn": "Meta AI",
+        "icon": "🦙",
+        "desc": "Meta Llama 驱动的 AI",
+        "descEn": "Meta AI powered by Llama",
+        "url": "https://ai.meta.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Poe",
+        "nameEn": "Poe",
+        "icon": "🐦",
+        "desc": "多模型聚合对话平台",
+        "descEn": "Multi-model aggregated chat platform",
+        "url": "https://poe.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Character.AI",
+        "nameEn": "Character.AI",
+        "icon": "🎭",
+        "desc": "角色扮演 AI 平台",
+        "descEn": "AI roleplay character platform",
+        "url": "https://character.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Groq",
+        "nameEn": "Groq",
+        "icon": "⚡",
+        "desc": "极速 LPU 推理服务",
+        "descEn": "Ultra-fast LPU inference service",
+        "url": "https://groq.com",
+        "tag": "free"
+      },
+      {
+        "name": "即梦 AI",
+        "nameEn": "Jimeng AI",
+        "icon": "🎨",
+        "desc": "字节 AI 图像视频生成",
+        "descEn": "ByteDance AI image/video generation",
+        "url": "https://jimeng.jianying.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Midjourney",
+        "nameEn": "Midjourney",
+        "icon": "🖼️",
+        "desc": "顶级 AI 图像生成工具",
+        "descEn": "Top AI image generation tool",
+        "url": "https://www.midjourney.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "DALL·E",
+        "nameEn": "DALL·E",
+        "icon": "🎨",
+        "desc": "OpenAI 图像生成模型",
+        "descEn": "OpenAI image generation model",
+        "url": "https://openai.com/dall-e-3",
+        "tag": "cloud"
+      },
+      {
+        "name": "Stable Diffusion",
+        "nameEn": "Stable Diffusion",
+        "icon": "🌊",
+        "desc": "开源图像生成模型",
+        "descEn": "Open-source image generation model",
+        "url": "https://stability.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Suno",
+        "nameEn": "Suno",
+        "icon": "🎵",
+        "desc": "AI 音乐生成工具",
+        "descEn": "AI music generation tool",
+        "url": "https://suno.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "ElevenLabs",
+        "nameEn": "ElevenLabs",
+        "icon": "🔊",
+        "desc": "顶级 AI 语音合成",
+        "descEn": "Top AI voice synthesis",
+        "url": "https://elevenlabs.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "Runway",
+        "nameEn": "Runway",
+        "icon": "🎬",
+        "desc": "AI 视频生成与编辑",
+        "descEn": "AI video generation and editing",
+        "url": "https://runwayml.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Monica",
+        "nameEn": "Monica",
+        "icon": "🧩",
+        "desc": "全能 AI 助手浏览器版",
+        "descEn": "All-in-one AI assistant browser edition",
+        "url": "https://monica.im",
+        "tag": "cloud"
+      },
+      {
+        "name": "You.com",
+        "nameEn": "You.com",
+        "icon": "🎯",
+        "desc": "AI 搜索 + 对话平台",
+        "descEn": "AI search and chat platform",
+        "url": "https://you.com",
+        "tag": "cloud"
+      }
+    ]
+  },
+  {
+    "id": "coding",
+    "emoji": "💻",
+    "name": "Coding Plan",
+    "nameEn": "Coding Plans",
+    "desc": "国内外常用 Coding Plan 入口",
+    "descEn": "Top coding subscription plans worldwide",
+    "items": [
+      {
+        "name": "GitHub Copilot",
+        "nameEn": "GitHub Copilot",
+        "icon": "🐙",
+        "desc": "GitHub AI 编程助手",
+        "descEn": "GitHub AI coding assistant",
+        "url": "https://github.com/features/copilot",
+        "tag": "cloud"
+      },
+      {
+        "name": "Cursor",
+        "nameEn": "Cursor",
+        "icon": "🖱️",
+        "desc": "AI 优先代码编辑器订阅",
+        "descEn": "AI-first code editor subscription",
+        "url": "https://cursor.sh",
+        "tag": "cloud"
+      },
+      {
+        "name": "Windsurf",
+        "nameEn": "Windsurf",
+        "icon": "🏄",
+        "desc": "Codeium AI 编辑器订阅",
+        "descEn": "Codeium AI editor subscription",
+        "url": "https://codeium.com/windsurf",
+        "tag": "cloud"
+      },
+      {
+        "name": "阿里云 Coding Plan",
+        "nameEn": "Aliyun Coding Plan",
+        "icon": "🟠",
+        "desc": "多模型 AI 编程订阅",
+        "descEn": "Multi-model AI coding subscription",
+        "url": "https://www.aliyun.com/benefit/scene/codingplan",
+        "tag": "cloud"
+      },
+      {
+        "name": "火山引擎 Coding Plan",
+        "nameEn": "Volcengine Coding Plan",
+        "icon": "🌋",
+        "desc": "模型自由、工具不限",
+        "descEn": "Flexible model and tool access",
+        "url": "https://www.volcengine.com/activity/codingplan",
+        "tag": "cloud"
+      },
+      {
+        "name": "百度千帆 Coding Plan",
+        "nameEn": "Qianfan Coding Plan",
+        "icon": "🐾",
+        "desc": "兼容 Claude Code 等工具",
+        "descEn": "Compatible with Claude Code and more",
+        "url": "https://cloud.baidu.com/product/codingplan.html",
+        "tag": "cloud"
+      },
+      {
+        "name": "Step Plan",
+        "nameEn": "Step Plan",
+        "icon": "🚀",
+        "desc": "阶跃星辰 Coding Plan",
+        "descEn": "StepFun coding subscription",
+        "url": "https://platform.stepfun.com/step-plan",
+        "tag": "cloud"
+      },
+      {
+        "name": "智谱 Coding Plan",
+        "nameEn": "Zhipu Coding Plan",
+        "icon": "🧠",
+        "desc": "智谱 AI 编程订阅",
+        "descEn": "Zhipu AI coding subscription",
+        "url": "https://open.bigmodel.cn/",
+        "tag": "cloud"
+      },
+      {
+        "name": "腾讯云 Coding Plan",
+        "nameEn": "Tencent Coding Plan",
+        "icon": "🔵",
+        "desc": "腾讯云 AI 编程套餐",
+        "descEn": "Tencent Cloud AI coding plan",
+        "url": "https://cloud.tencent.com/product/hunyuan",
+        "tag": "cloud"
+      },
+      {
+        "name": "Amazon CodeWhisperer",
+        "nameEn": "Amazon CodeWhisperer",
+        "icon": "🟡",
+        "desc": "AWS AI 编程助手",
+        "descEn": "AWS AI coding assistant",
+        "url": "https://aws.amazon.com/codewhisperer/",
+        "tag": "cloud"
+      },
+      {
+        "name": "JetBrains AI",
+        "nameEn": "JetBrains AI",
+        "icon": "🧩",
+        "desc": "JetBrains 全家桶 AI",
+        "descEn": "AI for all JetBrains IDEs",
+        "url": "https://www.jetbrains.com/ai/",
+        "tag": "cloud"
+      },
+      {
+        "name": "Tabnine",
+        "nameEn": "Tabnine",
+        "icon": "🔮",
+        "desc": "AI 代码补全高级版",
+        "descEn": "AI code completion pro plan",
+        "url": "https://www.tabnine.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Replit",
+        "nameEn": "Replit",
+        "icon": "🔁",
+        "desc": "在线 IDE + AI 编程订阅",
+        "descEn": "Online IDE with AI coding subscription",
+        "url": "https://replit.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Cody Pro",
+        "nameEn": "Cody Pro",
+        "icon": "🔍",
+        "desc": "Sourcegraph AI 编程订阅",
+        "descEn": "Sourcegraph AI coding subscription",
+        "url": "https://sourcegraph.com/cody",
+        "tag": "cloud"
+      },
+      {
+        "name": "Supermaven Pro",
+        "nameEn": "Supermaven Pro",
+        "icon": "🦸",
+        "desc": "极速 AI 代码补全订阅",
+        "descEn": "Ultra-fast AI code completion",
+        "url": "https://supermaven.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Devin",
+        "nameEn": "Devin",
+        "icon": "🤖",
+        "desc": "全自主 AI 工程师订阅",
+        "descEn": "Fully autonomous AI engineer plan",
+        "url": "https://devin.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Pieces Pro",
+        "nameEn": "Pieces Pro",
+        "icon": "🧩",
+        "desc": "AI 代码片段管理订阅",
+        "descEn": "AI code snippet management pro",
+        "url": "https://pieces.app",
+        "tag": "cloud"
+      },
+      {
+        "name": "Continue Pro",
+        "nameEn": "Continue Pro",
+        "icon": "🔗",
+        "desc": "开源 AI 编程插件订阅",
+        "descEn": "Open-source AI coding plugin pro",
+        "url": "https://www.continue.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "MiniMax Coding",
+        "nameEn": "MiniMax Coding",
+        "icon": "⚡",
+        "desc": "MiniMax 编程订阅套餐",
+        "descEn": "MiniMax coding subscription plan",
+        "url": "https://www.minimaxi.com/",
+        "tag": "cloud"
+      },
+      {
+        "name": "Kimi Coding Plan",
+        "nameEn": "Kimi Coding Plan",
+        "icon": "🌙",
+        "desc": "Kimi AI 编程订阅套餐",
+        "descEn": "Kimi AI coding subscription",
+        "url": "https://platform.moonshot.cn",
+        "tag": "cloud"
+      },
+      {
+        "name": "Bolt.new",
+        "nameEn": "Bolt.new",
+        "icon": "⚡",
+        "desc": "AI 全栈生成订阅",
+        "descEn": "AI full-stack generation subscription",
+        "url": "https://bolt.new",
+        "tag": "cloud"
+      },
+      {
+        "name": "v0",
+        "nameEn": "v0",
+        "icon": "▲",
+        "desc": "Vercel AI 组件生成订阅",
+        "descEn": "Vercel AI component generation pro",
+        "url": "https://v0.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "Lovable",
+        "nameEn": "Lovable",
+        "icon": "❤️",
+        "desc": "AI Web 应用生成订阅",
+        "descEn": "AI web app generation subscription",
+        "url": "https://lovable.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "Zed",
+        "nameEn": "Zed",
+        "icon": "⚡",
+        "desc": "高性能编辑器 AI 订阅",
+        "descEn": "High-performance editor AI plan",
+        "url": "https://zed.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "Amp",
+        "nameEn": "Amp",
+        "icon": "⚡",
+        "desc": "Anthropic 新一代编码 Agent",
+        "descEn": "Anthropic next-gen coding agent",
+        "url": "https://ampcode.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "OpenHands",
+        "nameEn": "OpenHands",
+        "icon": "🤲",
+        "desc": "开源自主开发 Agent",
+        "descEn": "Open-source autonomous dev agent",
+        "url": "https://www.all-hands.dev",
+        "tag": "free"
+      },
+      {
+        "name": "Aider",
+        "nameEn": "Aider",
+        "icon": "🤝",
+        "desc": "终端 AI 结对编程（免费）",
+        "descEn": "Terminal AI pair programming (free)",
+        "url": "https://aider.chat",
+        "tag": "free"
+      },
+      {
+        "name": "SWE-agent",
+        "nameEn": "SWE-agent",
+        "icon": "🐛",
+        "desc": "开源自主修 Bug Agent",
+        "descEn": "Open-source autonomous bug-fix agent",
+        "url": "https://swe-agent.com",
+        "tag": "free"
+      },
+      {
+        "name": "Codesandbox AI",
+        "nameEn": "Codesandbox AI",
+        "icon": "📦",
+        "desc": "在线沙盒 + AI 编程",
+        "descEn": "Online sandbox with AI coding",
+        "url": "https://codesandbox.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "Roo Code",
+        "nameEn": "Roo Code",
+        "icon": "🦘",
+        "desc": "VSCode 多模型 Agent（免费）",
+        "descEn": "Multi-model VSCode agent (free)",
+        "url": "https://github.com/RooVetGit/Roo-Code",
+        "tag": "free"
+      }
+    ]
+  },
+  {
+    "id": "maas",
+    "emoji": "🏭",
+    "name": "MaaS平台",
+    "nameEn": "MaaS Platforms",
+    "desc": "国内外常用 MaaS 服务商入口",
+    "descEn": "Top Model-as-a-Service providers worldwide",
+    "items": [
+      {
+        "name": "阿里云百炼",
+        "nameEn": "Alibaba Bailian",
+        "icon": "🟠",
+        "desc": "企业级大模型服务平台",
+        "descEn": "Enterprise LLM service platform",
+        "url": "https://bailian.console.aliyun.com/",
+        "tag": "cloud"
+      },
+      {
+        "name": "火山方舟",
+        "nameEn": "Volcengine Ark",
+        "icon": "🌋",
+        "desc": "模型训练推理评测全栈",
+        "descEn": "Full-stack model training, inference & eval",
+        "url": "https://www.volcengine.com/product/ark",
+        "tag": "cloud"
+      },
+      {
+        "name": "百度千帆",
+        "nameEn": "Baidu Qianfan",
+        "icon": "🐾",
+        "desc": "以 Agent 为核心的大模型平台",
+        "descEn": "Agent-centric LLM platform",
+        "url": "https://cloud.baidu.com/product-s/qianfan_home",
+        "tag": "cloud"
+      },
+      {
+        "name": "硅基流动",
+        "nameEn": "SiliconFlow",
+        "icon": "💎",
+        "desc": "200+ 开源商用模型统一 API",
+        "descEn": "200+ open/commercial model unified API",
+        "url": "https://www.siliconflow.cn/",
+        "tag": "cloud"
+      },
+      {
+        "name": "讯飞星火 MaaS",
+        "nameEn": "iFlytek Spark MaaS",
+        "icon": "🌟",
+        "desc": "模型精调定制服务平台",
+        "descEn": "Model fine-tuning and custom service",
+        "url": "https://xinghuo.xfyun.cn/maas-home",
+        "tag": "cloud"
+      },
+      {
+        "name": "OpenRouter",
+        "nameEn": "OpenRouter",
+        "icon": "🔀",
+        "desc": "AI 模型聚合统一 API",
+        "descEn": "Unified API aggregating AI models",
+        "url": "https://openrouter.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "ZenMux",
+        "nameEn": "ZenMux",
+        "icon": "🎯",
+        "desc": "支持保险赔付的企业级聚合",
+        "descEn": "Enterprise model aggregation with insurance",
+        "url": "https://zenmux.ai/",
+        "tag": "cloud"
+      },
+      {
+        "name": "Model123",
+        "nameEn": "Model123",
+        "icon": "🔢",
+        "desc": "专业企业级 AI 编程平台",
+        "descEn": "Professional enterprise AI coding platform",
+        "url": "https://www.model123.ai/",
+        "tag": "cloud"
+      },
+      {
+        "name": "华为云 MaaS",
+        "nameEn": "Huawei Cloud MaaS",
+        "icon": "🌺",
+        "desc": "大模型全生命周期管理",
+        "descEn": "Full lifecycle LLM management",
+        "url": "https://www.huaweicloud.com/ai/token-service.html",
+        "tag": "cloud"
+      },
+      {
+        "name": "腾讯混元",
+        "nameEn": "Tencent Hunyuan",
+        "icon": "🔵",
+        "desc": "腾讯大模型服务平台",
+        "descEn": "Tencent LLM service platform",
+        "url": "https://cloud.tencent.com/product/hunyuan",
+        "tag": "cloud"
+      },
+      {
+        "name": "OpenAI API",
+        "nameEn": "OpenAI API",
+        "icon": "🟢",
+        "desc": "GPT 系列模型 API",
+        "descEn": "GPT series model API",
+        "url": "https://platform.openai.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Anthropic API",
+        "nameEn": "Anthropic API",
+        "icon": "🟣",
+        "desc": "Claude 系列模型 API",
+        "descEn": "Claude series model API",
+        "url": "https://console.anthropic.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Google AI Studio",
+        "nameEn": "Google AI Studio",
+        "icon": "💎",
+        "desc": "Gemini 模型 API 平台",
+        "descEn": "Gemini model API platform",
+        "url": "https://aistudio.google.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "xAI API",
+        "nameEn": "xAI API",
+        "icon": "✖️",
+        "desc": "Grok 系列模型 API",
+        "descEn": "Grok series model API",
+        "url": "https://console.x.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Mistral API",
+        "nameEn": "Mistral API",
+        "icon": "🌬️",
+        "desc": "欧洲开源模型 API",
+        "descEn": "European open-source model API",
+        "url": "https://console.mistral.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Together AI",
+        "nameEn": "Together AI",
+        "icon": "🤝",
+        "desc": "开源模型推理 API",
+        "descEn": "Open-source model inference API",
+        "url": "https://www.together.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Groq Cloud",
+        "nameEn": "Groq Cloud",
+        "icon": "⚡",
+        "desc": "LPU 极速推理服务",
+        "descEn": "LPU ultra-fast inference service",
+        "url": "https://console.groq.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Replicate",
+        "nameEn": "Replicate",
+        "icon": "🔄",
+        "desc": "一键运行开源模型 API",
+        "descEn": "One-click open-source model API",
+        "url": "https://replicate.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Hugging Face API",
+        "nameEn": "Hugging Face API",
+        "icon": "🤗",
+        "desc": "模型托管推理端点",
+        "descEn": "Model hosting inference endpoints",
+        "url": "https://huggingface.co/inference-endpoints",
+        "tag": "cloud"
+      },
+      {
+        "name": "Cohere",
+        "nameEn": "Cohere",
+        "icon": "🔗",
+        "desc": "企业级自然语言 API",
+        "descEn": "Enterprise natural language API",
+        "url": "https://cohere.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Deepinfra",
+        "nameEn": "Deepinfra",
+        "icon": "🔧",
+        "desc": "开源模型低价推理",
+        "descEn": "Low-cost open-source model inference",
+        "url": "https://deepinfra.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Fireworks AI",
+        "nameEn": "Fireworks AI",
+        "icon": "🎆",
+        "desc": "快速开源模型推理",
+        "descEn": "Fast open-source model inference",
+        "url": "https://fireworks.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Lepton AI",
+        "nameEn": "Lepton AI",
+        "icon": "⚛️",
+        "desc": "简洁高效模型推理",
+        "descEn": "Clean and efficient model inference",
+        "url": "https://www.lepton.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Perplexity API",
+        "nameEn": "Perplexity API",
+        "icon": "🔍",
+        "desc": "在线搜索增强 API",
+        "descEn": "Online search-augmented API",
+        "url": "https://docs.perplexity.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "七牛云 AI",
+        "nameEn": "Qiniu Cloud AI",
+        "icon": "🐂",
+        "desc": "多顶级模型兼容 OpenAI API",
+        "descEn": "Top models with OpenAI-compatible API",
+        "url": "https://www.qiniu.com/ai/agent",
+        "tag": "cloud"
+      },
+      {
+        "name": "快手万擎",
+        "nameEn": "Kuaishou Wanqing",
+        "icon": "🎬",
+        "desc": "企业级大模型开发平台",
+        "descEn": "Enterprise LLM development platform",
+        "url": "https://www.streamlake.com/product/wanqing",
+        "tag": "cloud"
+      },
+      {
+        "name": "商汤日日新",
+        "nameEn": "SenseNova",
+        "icon": "🌅",
+        "desc": "商汤大模型 API 平台",
+        "descEn": "SenseTime LLM API platform",
+        "url": "https://platform.sensenova.cn",
+        "tag": "cloud"
+      },
+      {
+        "name": "网易有道 MaaS",
+        "nameEn": "Youdao MaaS",
+        "icon": "📚",
+        "desc": "有道大模型服务平台",
+        "descEn": "NetEase Youdao LLM service platform",
+        "url": "https://ai.youdao.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "AI21 Labs",
+        "nameEn": "AI21 Labs",
+        "icon": "🔬",
+        "desc": "Jamba 系列模型 API",
+        "descEn": "Jamba series model API",
+        "url": "https://www.ai21.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "360 智脑",
+        "nameEn": "360 AI Brain",
+        "icon": "🔒",
+        "desc": "360 大模型服务平台",
+        "descEn": "360 LLM service platform",
+        "url": "https://ai.360.com",
+        "tag": "cloud"
+      }
+    ]
+  },
+  {
+    "id": "skills",
+    "emoji": "🛠️",
+    "name": "Skills市场",
+    "nameEn": "Skills Market",
+    "desc": "常见 Skills 技能市场",
+    "descEn": "Popular skill marketplaces for AI agents",
+    "items": [
+      {
+        "name": "ClawHub",
+        "nameEn": "ClawHub",
+        "icon": "🦞",
+        "desc": "OpenClaw 官方技能市场",
+        "descEn": "OpenClaw official skill marketplace",
+        "url": "https://clawhub.com",
+        "tag": "free"
+      },
+      {
+        "name": "Pipedream",
+        "nameEn": "Pipedream",
+        "icon": "🌊",
+        "desc": "开发者集成工作流平台",
+        "descEn": "Developer integration workflow platform",
+        "url": "https://pipedream.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "LangChain Hub",
+        "nameEn": "LangChain Hub",
+        "icon": "🦜",
+        "desc": "LangChain 提示词技能库",
+        "descEn": "LangChain prompt skill library",
+        "url": "https://smith.langchain.com/hub",
+        "tag": "free"
+      },
+      {
+        "name": "FlowiseAI",
+        "nameEn": "FlowiseAI",
+        "icon": "🌊",
+        "desc": "开源 LLM 工作流构建器",
+        "descEn": "Open-source LLM workflow builder",
+        "url": "https://flowiseai.com",
+        "tag": "free"
+      },
+      {
+        "name": "Dify Market",
+        "nameEn": "Dify Market",
+        "icon": "🎯",
+        "desc": "Dify 工作流应用市场",
+        "descEn": "Dify workflow app marketplace",
+        "url": "https://cloud.dify.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "n8n Templates",
+        "nameEn": "n8n Templates",
+        "icon": "🔁",
+        "desc": "n8n 自动化工作流模板",
+        "descEn": "n8n automation workflow templates",
+        "url": "https://n8n.io/workflows/",
+        "tag": "free"
+      },
+      {
+        "name": "Activepieces",
+        "nameEn": "Activepieces",
+        "icon": "🧱",
+        "desc": "开源自动化工具库",
+        "descEn": "Open-source automation tools library",
+        "url": "https://www.activepieces.com",
+        "tag": "free"
+      },
+      {
+        "name": "Rivet",
+        "nameEn": "Rivet",
+        "icon": "🔩",
+        "desc": "开源 AI 工作流 IDE",
+        "descEn": "Open-source AI workflow IDE",
+        "url": "https://rivet.ironcladapp.com",
+        "tag": "free"
+      },
+      {
+        "name": "PromptFlow",
+        "nameEn": "PromptFlow",
+        "icon": "🌊",
+        "desc": "微软开源提示词工作流",
+        "descEn": "Microsoft open-source prompt workflow",
+        "url": "https://github.com/microsoft/promptflow",
+        "tag": "free"
+      },
+      {
+        "name": "Hugging Face Spaces",
+        "nameEn": "HF Spaces",
+        "icon": "🤗",
+        "desc": "AI 应用和工具展示空间",
+        "descEn": "AI apps and tools showcase space",
+        "url": "https://huggingface.co/spaces",
+        "tag": "free"
+      },
+      {
+        "name": "Replicate Models",
+        "nameEn": "Replicate Models",
+        "icon": "🔄",
+        "desc": "可调用的开源模型工具",
+        "descEn": "Callable open-source model tools",
+        "url": "https://replicate.com/explore",
+        "tag": "cloud"
+      },
+      {
+        "name": "OpenTools",
+        "nameEn": "OpenTools",
+        "icon": "🔓",
+        "desc": "AI 工具开放目录",
+        "descEn": "Open directory of AI tools",
+        "url": "https://opentools.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Relevance AI",
+        "nameEn": "Relevance AI",
+        "icon": "🎯",
+        "desc": "无代码 AI 工具构建平台",
+        "descEn": "No-code AI tool building platform",
+        "url": "https://relevanceai.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Stack AI",
+        "nameEn": "Stack AI",
+        "icon": "📚",
+        "desc": "企业 AI 工作流构建器",
+        "descEn": "Enterprise AI workflow builder",
+        "url": "https://www.stack-ai.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Beam AI",
+        "nameEn": "Beam AI",
+        "icon": "✨",
+        "desc": "AI 技能自动化平台",
+        "descEn": "AI skill automation platform",
+        "url": "https://beam.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Botpress Hub",
+        "nameEn": "Botpress Hub",
+        "icon": "🤖",
+        "desc": "Botpress 机器人技能库",
+        "descEn": "Botpress bot skill library",
+        "url": "https://botpress.com/marketplace",
+        "tag": "cloud"
+      },
+      {
+        "name": "Voiceflow Templates",
+        "nameEn": "Voiceflow Templates",
+        "icon": "🎙️",
+        "desc": "Voiceflow 对话流模板",
+        "descEn": "Voiceflow conversation flow templates",
+        "url": "https://www.voiceflow.com/templates",
+        "tag": "cloud"
+      },
+      {
+        "name": "TaskingAI",
+        "nameEn": "TaskingAI",
+        "icon": "🎯",
+        "desc": "开源 AI 应用开发平台",
+        "descEn": "Open-source AI app development platform",
+        "url": "https://www.tasking.ai",
+        "tag": "free"
+      },
+      {
+        "name": "AgentScope Hub",
+        "nameEn": "AgentScope Hub",
+        "icon": "🤝",
+        "desc": "阿里 AgentScope 技能库",
+        "descEn": "Alibaba AgentScope skill library",
+        "url": "https://agentscope.io",
+        "tag": "free"
+      },
+      {
+        "name": "Make Templates",
+        "nameEn": "Make Templates",
+        "icon": "🔮",
+        "desc": "Make 自动化场景模板",
+        "descEn": "Make automation scenario templates",
+        "url": "https://www.make.com/en/templates",
+        "tag": "cloud"
+      },
+      {
+        "name": "Wordware",
+        "nameEn": "Wordware",
+        "icon": "📝",
+        "desc": "自然语言 AI 应用开发",
+        "descEn": "Natural language AI app development",
+        "url": "https://www.wordware.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "ToolBench",
+        "nameEn": "ToolBench",
+        "icon": "🔧",
+        "desc": "工具调用基准数据集",
+        "descEn": "Tool calling benchmark dataset",
+        "url": "https://github.com/OpenBMB/ToolBench",
+        "tag": "free"
+      },
+      {
+        "name": "Crew AI Hub",
+        "nameEn": "Crew AI Hub",
+        "icon": "👥",
+        "desc": "CrewAI 多 Agent 技能市场",
+        "descEn": "CrewAI multi-agent skill marketplace",
+        "url": "https://www.crewai.com",
+        "tag": "free"
+      }
+    ]
+  },
+  {
+    "id": "agents",
+    "emoji": "🤖",
+    "name": "Agent生态",
+    "nameEn": "Agent Ecosystem",
+    "desc": "最常使用的 Agent 平台与框架",
+    "descEn": "Most popular agent platforms and frameworks",
+    "items": [
+      {
+        "name": "OpenClaw",
+        "nameEn": "OpenClaw",
+        "icon": "🦞",
+        "desc": "开源本地优先 AI 助手",
+        "descEn": "Open-source local-first AI assistant",
+        "url": "https://openclaw.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Manus",
+        "nameEn": "Manus",
+        "icon": "🤲",
+        "desc": "全流程自动化 Agent",
+        "descEn": "Full-process automation agent",
+        "url": "https://manus.im",
+        "tag": "cloud"
+      },
+      {
+        "name": "AutoGPT",
+        "nameEn": "AutoGPT",
+        "icon": "🔄",
+        "desc": "开源自主 AI Agent",
+        "descEn": "Open-source autonomous AI agent",
+        "url": "https://autogpt.net",
+        "tag": "free"
+      },
+      {
+        "name": "CrewAI",
+        "nameEn": "CrewAI",
+        "icon": "👥",
+        "desc": "多 Agent 协作框架",
+        "descEn": "Multi-agent collaboration framework",
+        "url": "https://crewai.com",
+        "tag": "free"
+      },
+      {
+        "name": "LangChain",
+        "nameEn": "LangChain",
+        "icon": "🦜",
+        "desc": "LLM 应用开发框架",
+        "descEn": "LLM application development framework",
+        "url": "https://langchain.com",
+        "tag": "free"
+      },
+      {
+        "name": "LlamaIndex",
+        "nameEn": "LlamaIndex",
+        "icon": "🦙",
+        "desc": "数据增强 LLM 框架",
+        "descEn": "Data-augmented LLM framework",
+        "url": "https://llamaindex.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Dify",
+        "nameEn": "Dify",
+        "icon": "🎯",
+        "desc": "开源 LLM 应用开发平台",
+        "descEn": "Open-source LLM app development platform",
+        "url": "https://dify.ai",
+        "tag": "free"
+      },
+      {
+        "name": "Coze",
+        "nameEn": "Coze",
+        "icon": "🤖",
+        "desc": "字节 AI Agent 开发平台",
+        "descEn": "ByteDance AI agent development platform",
+        "url": "https://www.coze.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "FastGPT",
+        "nameEn": "FastGPT",
+        "icon": "⚡",
+        "desc": "基于 LLM 知识库问答",
+        "descEn": "LLM-based knowledge base Q&A",
+        "url": "https://fastgpt.in",
+        "tag": "free"
+      },
+      {
+        "name": "n8n",
+        "nameEn": "n8n",
+        "icon": "🔁",
+        "desc": "开源工作流自动化",
+        "descEn": "Open-source workflow automation",
+        "url": "https://n8n.io",
+        "tag": "free"
+      },
+      {
+        "name": "Make",
+        "nameEn": "Make",
+        "icon": "🔮",
+        "desc": "可视化自动化平台",
+        "descEn": "Visual automation platform",
+        "url": "https://make.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Zapier",
+        "nameEn": "Zapier",
+        "icon": "⚡",
+        "desc": "最大自动化集成平台",
+        "descEn": "Largest automation integration platform",
+        "url": "https://zapier.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "MetaGPT",
+        "nameEn": "MetaGPT",
+        "icon": "🧠",
+        "desc": "多 Agent 软件开发框架",
+        "descEn": "Multi-agent software development framework",
+        "url": "https://metagpt.ai",
+        "tag": "free"
+      },
+      {
+        "name": "AgentScope",
+        "nameEn": "AgentScope",
+        "icon": "🤝",
+        "desc": "阿里多 Agent 框架",
+        "descEn": "Alibaba multi-agent framework",
+        "url": "https://agentscope.io",
+        "tag": "free"
+      },
+      {
+        "name": "SuperAGI",
+        "nameEn": "SuperAGI",
+        "icon": "🦸",
+        "desc": "开源自主 Agent 平台",
+        "descEn": "Open-source autonomous agent platform",
+        "url": "https://superagi.com",
+        "tag": "free"
+      },
+      {
+        "name": "Flowise",
+        "nameEn": "Flowise",
+        "icon": "🌊",
+        "desc": "开源低代码 LLM 平台",
+        "descEn": "Open-source low-code LLM platform",
+        "url": "https://flowiseai.com",
+        "tag": "free"
+      },
+      {
+        "name": "Botpress",
+        "nameEn": "Botpress",
+        "icon": "🤖",
+        "desc": "企业级对话 AI 平台",
+        "descEn": "Enterprise conversational AI platform",
+        "url": "https://botpress.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Voiceflow",
+        "nameEn": "Voiceflow",
+        "icon": "🎙️",
+        "desc": "AI 对话体验设计工具",
+        "descEn": "AI conversation experience design tool",
+        "url": "https://voiceflow.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Rasa",
+        "nameEn": "Rasa",
+        "icon": "🔮",
+        "desc": "开源对话 AI 框架",
+        "descEn": "Open-source conversational AI framework",
+        "url": "https://rasa.com",
+        "tag": "free"
+      },
+      {
+        "name": "OpenDevin",
+        "nameEn": "OpenHands",
+        "icon": "💻",
+        "desc": "开源 AI 软件工程师",
+        "descEn": "Open-source AI software engineer",
+        "url": "https://github.com/OpenDevin/OpenDevin",
+        "tag": "free"
+      },
+      {
+        "name": "AgentGPT",
+        "nameEn": "AgentGPT",
+        "icon": "🤖",
+        "desc": "浏览器内运行 Agent",
+        "descEn": "Run agents directly in browser",
+        "url": "https://agentgpt.reworkd.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Genspark",
+        "nameEn": "Genspark",
+        "icon": "✨",
+        "desc": "AI 搜索 + Agent 平台",
+        "descEn": "AI search and agent platform",
+        "url": "https://www.genspark.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "E2B",
+        "nameEn": "E2B",
+        "icon": "🖥️",
+        "desc": "AI Agent 代码执行沙盒",
+        "descEn": "Code execution sandbox for AI agents",
+        "url": "https://e2b.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "Modal",
+        "nameEn": "Modal",
+        "icon": "☁️",
+        "desc": "云端 AI 函数执行平台",
+        "descEn": "Cloud AI function execution platform",
+        "url": "https://modal.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Activepieces",
+        "nameEn": "Activepieces",
+        "icon": "🧱",
+        "desc": "开源自动化 Agent",
+        "descEn": "Open-source automation agent",
+        "url": "https://www.activepieces.com",
+        "tag": "free"
+      },
+      {
+        "name": "BabyAGI",
+        "nameEn": "BabyAGI",
+        "icon": "👶",
+        "desc": "简单任务驱动 Agent",
+        "descEn": "Simple task-driven agent",
+        "url": "https://github.com/yoheinakajima/babyagi",
+        "tag": "free"
+      },
+      {
+        "name": "Phidata",
+        "nameEn": "Phidata",
+        "icon": "🧰",
+        "desc": "构建多模态 AI Agent",
+        "descEn": "Build multimodal AI agents",
+        "url": "https://www.phidata.com",
+        "tag": "free"
+      },
+      {
+        "name": "Semantic Kernel",
+        "nameEn": "Semantic Kernel",
+        "icon": "🔵",
+        "desc": "微软 AI 应用开发 SDK",
+        "descEn": "Microsoft AI application development SDK",
+        "url": "https://github.com/microsoft/semantic-kernel",
+        "tag": "free"
+      },
+      {
+        "name": "Haystack",
+        "nameEn": "Haystack",
+        "icon": "🌾",
+        "desc": "开源 LLM 应用框架",
+        "descEn": "Open-source LLM application framework",
+        "url": "https://haystack.deepset.ai",
+        "tag": "free"
+      }
+    ]
+  },
+  {
+    "id": "payment",
+    "emoji": "💳",
+    "name": "Agent支付",
+    "nameEn": "Payment Tools",
+    "desc": "常见 Agent 支付工具",
+    "descEn": "Common payment tools for AI agents",
+    "items": [
+      {
+        "name": "Stripe",
+        "nameEn": "Stripe",
+        "icon": "💳",
+        "desc": "全球最流行支付平台",
+        "descEn": "World most popular payment platform",
+        "url": "https://stripe.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "支付宝",
+        "nameEn": "Alipay",
+        "icon": "💙",
+        "desc": "国内主流移动支付",
+        "descEn": "Leading mobile payment in China",
+        "url": "https://www.alipay.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "微信支付",
+        "nameEn": "WeChat Pay",
+        "icon": "💚",
+        "desc": "微信生态支付工具",
+        "descEn": "WeChat ecosystem payment tool",
+        "url": "https://pay.weixin.qq.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Paddle",
+        "nameEn": "Paddle",
+        "icon": "🏓",
+        "desc": "SaaS 软件收款平台",
+        "descEn": "SaaS software payment platform",
+        "url": "https://paddle.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "LemonSqueezy",
+        "nameEn": "LemonSqueezy",
+        "icon": "🍋",
+        "desc": "数字产品收款工具",
+        "descEn": "Digital product payment tool",
+        "url": "https://lemonsqueezy.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Creem",
+        "nameEn": "Creem",
+        "icon": "🎯",
+        "desc": "AI 产品专属支付平台",
+        "descEn": "Payment platform for AI products",
+        "url": "https://www.creem.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "Polar",
+        "nameEn": "Polar",
+        "icon": "🐻‍❄️",
+        "desc": "开发者收款开源工具",
+        "descEn": "Open-source payment tool for developers",
+        "url": "https://polar.sh",
+        "tag": "free"
+      },
+      {
+        "name": "RevenueCat",
+        "nameEn": "RevenueCat",
+        "icon": "🐱",
+        "desc": "订阅管理 SDK",
+        "descEn": "Subscription management SDK",
+        "url": "https://www.revenuecat.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "PayPal",
+        "nameEn": "PayPal",
+        "icon": "🔵",
+        "desc": "全球主流在线支付",
+        "descEn": "Leading global online payment",
+        "url": "https://paypal.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Square",
+        "nameEn": "Square",
+        "icon": "⬛",
+        "desc": "线上线下一体支付",
+        "descEn": "Unified online and offline payment",
+        "url": "https://squareup.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Braintree",
+        "nameEn": "Braintree",
+        "icon": "🌳",
+        "desc": "PayPal 旗下支付网关",
+        "descEn": "PayPal payment gateway",
+        "url": "https://www.braintreepayments.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Adyen",
+        "nameEn": "Adyen",
+        "icon": "🌐",
+        "desc": "企业级全渠道支付",
+        "descEn": "Enterprise omnichannel payment",
+        "url": "https://www.adyen.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Coinbase Commerce",
+        "nameEn": "Coinbase Commerce",
+        "icon": "🪙",
+        "desc": "加密货币收款",
+        "descEn": "Cryptocurrency payment acceptance",
+        "url": "https://commerce.coinbase.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "NOWPayments",
+        "nameEn": "NOWPayments",
+        "icon": "💰",
+        "desc": "加密支付聚合服务",
+        "descEn": "Crypto payment aggregation service",
+        "url": "https://nowpayments.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "Chargebee",
+        "nameEn": "Chargebee",
+        "icon": "🔄",
+        "desc": "订阅计费管理平台",
+        "descEn": "Subscription billing management platform",
+        "url": "https://www.chargebee.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Recurly",
+        "nameEn": "Recurly",
+        "icon": "♻️",
+        "desc": "订阅管理与计费",
+        "descEn": "Subscription management and billing",
+        "url": "https://recurly.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Lago",
+        "nameEn": "Lago",
+        "icon": "🏔️",
+        "desc": "开源计量计费平台",
+        "descEn": "Open-source metered billing platform",
+        "url": "https://www.getlago.com",
+        "tag": "free"
+      },
+      {
+        "name": "OpenMeter",
+        "nameEn": "OpenMeter",
+        "icon": "📊",
+        "desc": "开源用量计量工具",
+        "descEn": "Open-source usage metering tool",
+        "url": "https://openmeter.io",
+        "tag": "free"
+      },
+      {
+        "name": "Autumn",
+        "nameEn": "Autumn",
+        "icon": "🍂",
+        "desc": "AI 产品用量计费",
+        "descEn": "Usage-based billing for AI products",
+        "url": "https://useautumn.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Orb",
+        "nameEn": "Orb",
+        "icon": "🔮",
+        "desc": "用量驱动计费平台",
+        "descEn": "Usage-driven billing platform",
+        "url": "https://withorb.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Metronome",
+        "nameEn": "Metronome",
+        "icon": "🎵",
+        "desc": "实时计量计费引擎",
+        "descEn": "Real-time metering and billing engine",
+        "url": "https://metronome.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Stigg",
+        "nameEn": "Stigg",
+        "icon": "⚙️",
+        "desc": "产品级订阅管理",
+        "descEn": "Product-level subscription management",
+        "url": "https://www.stigg.io",
+        "tag": "cloud"
+      },
+      {
+        "name": "Wise",
+        "nameEn": "Wise",
+        "icon": "🌍",
+        "desc": "国际转账低手续费",
+        "descEn": "Low-fee international money transfer",
+        "url": "https://wise.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Airwallex",
+        "nameEn": "Airwallex",
+        "icon": "✈️",
+        "desc": "跨境支付金融平台",
+        "descEn": "Cross-border payment financial platform",
+        "url": "https://www.airwallex.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "云账户",
+        "nameEn": "YunZhangHu",
+        "icon": "🇨🇳",
+        "desc": "国内灵活用工结算",
+        "descEn": "Flexible workforce payment in China",
+        "url": "https://www.yunzhanghu.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "汇付天下",
+        "nameEn": "Huifu",
+        "icon": "💱",
+        "desc": "国内跨境支付服务",
+        "descEn": "Cross-border payment service in China",
+        "url": "https://www.huifu.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "收钱吧",
+        "nameEn": "Shouqianba",
+        "icon": "💵",
+        "desc": "聚合收款解决方案",
+        "descEn": "Aggregated payment solution",
+        "url": "https://www.shouqianba.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "2Checkout",
+        "nameEn": "2Checkout",
+        "icon": "2️⃣",
+        "desc": "全球数字商品支付",
+        "descEn": "Global digital goods payment",
+        "url": "https://www.2checkout.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Zuora",
+        "nameEn": "Zuora",
+        "icon": "🔵",
+        "desc": "企业订阅变现平台",
+        "descEn": "Enterprise subscription monetization",
+        "url": "https://zuora.com",
+        "tag": "cloud"
+      }
+    ]
+  },
+  {
+    "id": "mcp",
+    "emoji": "🔌",
+    "name": "MCP工具",
+    "nameEn": "MCP Tools",
+    "desc": "常见 MCP 服务商与工具",
+    "descEn": "Popular MCP servers and tools",
+    "items": [
+      {
+        "name": "MCP 官方文档",
+        "nameEn": "MCP Official Docs",
+        "icon": "📖",
+        "desc": "Model Context Protocol 规范",
+        "descEn": "Model Context Protocol specification",
+        "url": "https://modelcontextprotocol.io",
+        "tag": "free"
+      },
+      {
+        "name": "Smithery",
+        "nameEn": "Smithery",
+        "icon": "⚒️",
+        "desc": "MCP 技能发现安装平台",
+        "descEn": "MCP skill discovery and install",
+        "url": "https://smithery.ai",
+        "tag": "free"
+      },
+      {
+        "name": "MCP.so",
+        "nameEn": "MCP.so",
+        "icon": "🔌",
+        "desc": "MCP 服务器目录",
+        "descEn": "MCP server directory",
+        "url": "https://mcp.so",
+        "tag": "free"
+      },
+      {
+        "name": "Glama MCP",
+        "nameEn": "Glama MCP",
+        "icon": "✨",
+        "desc": "MCP 服务器发现平台",
+        "descEn": "MCP server discovery platform",
+        "url": "https://glama.ai/mcp/servers",
+        "tag": "free"
+      },
+      {
+        "name": "PulseMCP",
+        "nameEn": "PulseMCP",
+        "icon": "💓",
+        "desc": "MCP 工具聚合目录",
+        "descEn": "MCP tools aggregated directory",
+        "url": "https://www.pulsemcp.com",
+        "tag": "free"
+      },
+      {
+        "name": "Awesome MCP",
+        "nameEn": "Awesome MCP",
+        "icon": "⭐",
+        "desc": "精选 MCP 服务器列表",
+        "descEn": "Curated MCP server list",
+        "url": "https://github.com/punkpeye/awesome-mcp-servers",
+        "tag": "free"
+      },
+      {
+        "name": "Zapier MCP",
+        "nameEn": "Zapier MCP",
+        "icon": "⚡",
+        "desc": "6000+ 应用 MCP 接口",
+        "descEn": "MCP interface for 6000+ apps",
+        "url": "https://zapier.com/mcp",
+        "tag": "cloud"
+      },
+      {
+        "name": "Composio MCP",
+        "nameEn": "Composio MCP",
+        "icon": "🧩",
+        "desc": "250+ 应用集成 MCP",
+        "descEn": "250+ app integration MCP",
+        "url": "https://composio.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "Browserbase",
+        "nameEn": "Browserbase",
+        "icon": "🌐",
+        "desc": "云端浏览器 MCP",
+        "descEn": "Cloud browser MCP",
+        "url": "https://browserbase.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Firecrawl",
+        "nameEn": "Firecrawl",
+        "icon": "🔥",
+        "desc": "网页抓取 MCP 工具",
+        "descEn": "Web scraping MCP tool",
+        "url": "https://firecrawl.dev",
+        "tag": "cloud"
+      },
+      {
+        "name": "Exa",
+        "nameEn": "Exa",
+        "icon": "🔍",
+        "desc": "AI 搜索 MCP 接口",
+        "descEn": "AI search MCP interface",
+        "url": "https://exa.ai",
+        "tag": "cloud"
+      },
+      {
+        "name": "Tavily",
+        "nameEn": "Tavily",
+        "icon": "🔎",
+        "desc": "AI 搜索 API MCP",
+        "descEn": "AI search API MCP",
+        "url": "https://tavily.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Context7",
+        "nameEn": "Context7",
+        "icon": "7️⃣",
+        "desc": "最新文档上下文 MCP",
+        "descEn": "Up-to-date docs context MCP",
+        "url": "https://context7.com",
+        "tag": "free"
+      },
+      {
+        "name": "Neon MCP",
+        "nameEn": "Neon MCP",
+        "icon": "🐘",
+        "desc": "Postgres 数据库 MCP",
+        "descEn": "Postgres database MCP",
+        "url": "https://neon.tech",
+        "tag": "cloud"
+      },
+      {
+        "name": "Supabase MCP",
+        "nameEn": "Supabase MCP",
+        "icon": "⚡",
+        "desc": "Supabase 数据库 MCP",
+        "descEn": "Supabase database MCP",
+        "url": "https://supabase.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "GitHub MCP",
+        "nameEn": "GitHub MCP",
+        "icon": "🐙",
+        "desc": "GitHub 操作 MCP",
+        "descEn": "GitHub operations MCP",
+        "url": "https://github.com/github/github-mcp-server",
+        "tag": "free"
+      },
+      {
+        "name": "Cloudflare MCP",
+        "nameEn": "Cloudflare MCP",
+        "icon": "🔥",
+        "desc": "Cloudflare 服务 MCP",
+        "descEn": "Cloudflare services MCP",
+        "url": "https://developers.cloudflare.com/mcp-server",
+        "tag": "free"
+      },
+      {
+        "name": "Stripe MCP",
+        "nameEn": "Stripe MCP",
+        "icon": "💳",
+        "desc": "Stripe 支付 MCP",
+        "descEn": "Stripe payment MCP",
+        "url": "https://stripe.com/docs/stripe-mcp",
+        "tag": "cloud"
+      },
+      {
+        "name": "Linear MCP",
+        "nameEn": "Linear MCP",
+        "icon": "📋",
+        "desc": "Linear 项目管理 MCP",
+        "descEn": "Linear project management MCP",
+        "url": "https://linear.app",
+        "tag": "cloud"
+      },
+      {
+        "name": "Notion MCP",
+        "nameEn": "Notion MCP",
+        "icon": "📝",
+        "desc": "Notion 文档 MCP",
+        "descEn": "Notion document MCP",
+        "url": "https://notion.so",
+        "tag": "cloud"
+      },
+      {
+        "name": "Slack MCP",
+        "nameEn": "Slack MCP",
+        "icon": "💬",
+        "desc": "Slack 消息 MCP",
+        "descEn": "Slack messaging MCP",
+        "url": "https://slack.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Google Drive MCP",
+        "nameEn": "Google Drive MCP",
+        "icon": "📁",
+        "desc": "谷歌云盘 MCP",
+        "descEn": "Google Drive MCP",
+        "url": "https://drive.google.com",
+        "tag": "cloud"
+      },
+      {
+        "name": "Brave Search MCP",
+        "nameEn": "Brave Search MCP",
+        "icon": "🦁",
+        "desc": "Brave 网页搜索 MCP",
+        "descEn": "Brave web search MCP",
+        "url": "https://brave.com/search/api/",
+        "tag": "cloud"
+      },
+      {
+        "name": "Fetch MCP",
+        "nameEn": "Fetch MCP",
+        "icon": "🌐",
+        "desc": "网页内容抓取 MCP",
+        "descEn": "Web content fetching MCP",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "tag": "free"
+      },
+      {
+        "name": "Filesystem MCP",
+        "nameEn": "Filesystem MCP",
+        "icon": "📂",
+        "desc": "本地文件系统 MCP",
+        "descEn": "Local filesystem MCP",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "tag": "free"
+      },
+      {
+        "name": "Memory MCP",
+        "nameEn": "Memory MCP",
+        "icon": "🧠",
+        "desc": "持久化记忆 MCP",
+        "descEn": "Persistent memory MCP",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "tag": "free"
+      },
+      {
+        "name": "Playwright MCP",
+        "nameEn": "Playwright MCP",
+        "icon": "🎭",
+        "desc": "浏览器自动化 MCP",
+        "descEn": "Browser automation MCP",
+        "url": "https://github.com/microsoft/playwright-mcp",
+        "tag": "free"
+      },
+      {
+        "name": "Puppeteer MCP",
+        "nameEn": "Puppeteer MCP",
+        "icon": "🤖",
+        "desc": "Puppeteer 浏览器 MCP",
+        "descEn": "Puppeteer browser MCP",
+        "url": "https://github.com/modelcontextprotocol/servers",
+        "tag": "free"
+      },
+      {
+        "name": "mcporter",
+        "nameEn": "mcporter",
+        "icon": "🦞",
+        "desc": "OpenClaw 本地 MCP 管理",
+        "descEn": "OpenClaw local MCP manager",
+        "url": "https://clawhub.com",
+        "tag": "free"
+      },
+      {
+        "name": "MCP Hub",
+        "nameEn": "MCP Hub",
+        "icon": "🔌",
+        "desc": "本地 MCP 服务器管理器",
+        "descEn": "Local MCP server manager",
+        "url": "https://github.com/ravitemer/mcphub.nvim",
+        "tag": "free"
+      }
+    ]
+  }
 ];
