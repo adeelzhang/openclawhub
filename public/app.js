@@ -1,5 +1,5 @@
 const VISIBLE_COUNT = 60;
-let currentLang = 'zh';
+let currentLang = localStorage.getItem('lang') || 'zh';
 let activeEngine = 'google';
 
 const I18N = {
@@ -65,6 +65,7 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
     const lang = btn.dataset.lang;
     if (lang === currentLang) return;
     currentLang = lang;
+    localStorage.setItem('lang', lang);
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     document.documentElement.lang = lang;
@@ -213,8 +214,30 @@ function rerenderAll() {
   applyI18n();
 }
 
-function init() {
+function applyLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
   rerenderAll();
+}
+
+function init() {
+  // 若用户已手动选择过语言，直接用
+  const saved = localStorage.getItem('lang');
+  if (saved) {
+    applyLang(saved);
+    return;
+  }
+  // 否则请求地区接口，非 CN 默认英文
+  fetch('/api/region')
+    .then(r => r.json())
+    .then(data => {
+      const lang = data.country === 'CN' ? 'zh' : 'en';
+      applyLang(lang);
+    })
+    .catch(() => applyLang('zh'));
 }
 
 init();

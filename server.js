@@ -78,6 +78,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// 根据 Cloudflare CF-IPCountry 头判断地区
+app.get('/api/region', (req, res) => {
+  const country = (req.headers['cf-ipcountry'] || '').toUpperCase();
+  res.json({ country: country || 'UNKNOWN' });
+});
+
 // ── 统计工具函数 ───────────────────────────────────────────
 function readLogsInRange(fromTs) {
   const now = Date.now() / 1000;
