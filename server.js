@@ -38,7 +38,6 @@ function appendLog(entry) {
   fs.appendFile(logFile(), JSON.stringify(entry) + '\n', () => {});
 }
 
-// 删除 6 个月前的日志文件
 function pruneOldLogs() {
   const cutoff = new Date();
   cutoff.setMonth(cutoff.getMonth() - 6);
@@ -56,12 +55,13 @@ function pruneOldLogs() {
 // ── 内存滚动窗口（5分钟）─────────────────────────────────
 let window5m = { reqs:[], errors4xx:0, errors5xx:0 };
 
-// ── 中间件：记录每次请求 ───────────────────────────────────
+// ── 中间件：记录每次请求（含 country）──────────────────────
 app.use((req, res, next) => {
-  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
-  const t  = Math.floor(Date.now() / 1000);
+  const ip      = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
+  const country = (req.headers['cf-ipcountry'] || '').toUpperCase() || 'XX';
+  const t       = Math.floor(Date.now() / 1000);
   res.on('finish', () => {
-    const entry = { t, ip, path: req.path, status: res.statusCode };
+    const entry = { t, ip, country, path: req.path, status: res.statusCode };
     appendLog(entry);
     window5m.reqs.push(entry);
     if (res.statusCode >= 400 && res.statusCode < 500) window5m.errors4xx++;
@@ -87,7 +87,6 @@ app.get('/api/region', (req, res) => {
 // ── 统计工具函数 ───────────────────────────────────────────
 function readLogsInRange(fromTs) {
   const now = Date.now() / 1000;
-  // 可能跨月，读所有相关文件
   const files = fs.readdirSync(LOG_DIR).filter(f => f.startsWith('access-')).sort();
   const entries = [];
   for (const f of files) {
@@ -104,47 +103,54 @@ function readLogsInRange(fromTs) {
   return entries;
 }
 
-function calcStats(entries) {
-  const pv  = entries.filter(e => e.path === '/').length;
-  const uv  = new Set(entries.filter(e => e.path === '/').map(e => e.ip)).size;
+function calcStats(entries, region) {
+  // region: 'cn' | 'overseas' | undefined(全部)
+  let filtered = entries;
+  if (region === 'cn')       filtered = entries.filter(e => e.country === 'CN');
+  if (region === 'overseas') filtered = entries.filter(e => e.country && e.country !== 'CN' && e.country !== 'XX');
+  const pvEntries = filtered.filter(e => e.path === '/');
+  const pv = pvEntries.length;
+  const uv = new Set(pvEntries.map(e => e.ip)).size;
   return { pv, uv };
 }
 
-function topPaths(entries, n=3) {
+function topPaths(entries, n = 3) {
   const cnt = {};
-  entries.forEach(e => { cnt[e.path] = (cnt[e.path]||0) + 1; });
-  return Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,n);
+  entries.forEach(e => { cnt[e.path] = (cnt[e.path] || 0) + 1; });
+  return Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, n);
 }
 
-function startOfDay(d)   { return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime()/1000; }
-function startOfWeek(d)  { const c=new Date(d); c.setDate(d.getDate()-d.getDay()); return startOfDay(c); }
-function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1).getTime()/1000; }
+function startOfDay(d)   { return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime() / 1000; }
+function startOfWeek(d)  { const c = new Date(d); c.setDate(d.getDate() - d.getDay()); return startOfDay(c); }
+function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1).getTime() / 1000; }
 
 // ── 5分钟定时推送 ──────────────────────────────────────────
 function report() {
   const now = new Date();
   const w   = window5m;
-  window5m  = { reqs:[], errors4xx:0, errors5xx:0 };  // 清零
+  window5m  = { reqs: [], errors4xx: 0, errors5xx: 0 };
 
   const reqs5m = w.reqs;
-  const ips5m  = new Set(reqs5m.map(e=>e.ip)).size;
-  const pv5m   = reqs5m.filter(e=>e.path==='/').length;
+  const ips5m  = new Set(reqs5m.map(e => e.ip)).size;
+  const pv5m   = reqs5m.filter(e => e.path === '/').length;
+  const cn5m   = reqs5m.filter(e => e.country === 'CN').length;
+  const os5m   = reqs5m.filter(e => e.country && e.country !== 'CN' && e.country !== 'XX').length;
   const top    = topPaths(reqs5m);
 
-  // 日/周/月统计（读日志文件）
   const dayEntries   = readLogsInRange(startOfDay(now));
   const weekEntries  = readLogsInRange(startOfWeek(now));
   const monthEntries = readLogsInRange(startOfMonth(now));
-  const dayS   = calcStats(dayEntries);
-  const weekS  = calcStats(weekEntries);
-  const monthS = calcStats(monthEntries);
 
-  const pad = n => String(n).padStart(2,'0');
+  const dayCN  = calcStats(dayEntries, 'cn');
+  const dayOS  = calcStats(dayEntries, 'overseas');
+  const weekCN = calcStats(weekEntries, 'cn');
+  const weekOS = calcStats(weekEntries, 'overseas');
+  const monCN  = calcStats(monthEntries, 'cn');
+  const monOS  = calcStats(monthEntries, 'overseas');
+
+  const pad = n => String(n).padStart(2, '0');
   const timeStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
-
-  const topStr = top.length
-    ? top.map(([p,c])=>`  ${p} ×${c}`).join('\n')
-    : '  (无请求)';
+  const topStr  = top.length ? top.map(([p, c]) => `  ${p} ×${c}`).join('\n') : '  (无请求)';
 
   const msg =
 `📊 <b>OpenClawZoo 监控报告</b>
@@ -152,14 +158,22 @@ function report() {
 
 <b>【过去5分钟】</b>
 请求: ${reqs5m.length}  IP: ${ips5m}  PV: ${pv5m}
-错误: ${w.errors4xx+w.errors5xx} (4xx:${w.errors4xx}  5xx:${w.errors5xx})
+🇨🇳 国内: ${cn5m}  🌍 海外: ${os5m}
+错误: ${w.errors4xx + w.errors5xx} (4xx:${w.errors4xx}  5xx:${w.errors5xx})
 Top路径:
 ${topStr}
 
-<b>【累计统计】</b>
-今日  PV: ${dayS.pv.toLocaleString()}   UV: ${dayS.uv.toLocaleString()}
-本周  PV: ${weekS.pv.toLocaleString()}   UV: ${weekS.uv.toLocaleString()}
-本月  PV: ${monthS.pv.toLocaleString()}   UV: ${monthS.uv.toLocaleString()}`;
+<b>【今日】</b>
+🇨🇳 国内  PV: ${dayCN.pv}   UV: ${dayCN.uv}
+🌍 海外  PV: ${dayOS.pv}   UV: ${dayOS.uv}
+
+<b>【本周】</b>
+🇨🇳 国内  PV: ${weekCN.pv}   UV: ${weekCN.uv}
+🌍 海外  PV: ${weekOS.pv}   UV: ${weekOS.uv}
+
+<b>【本月】</b>
+🇨🇳 国内  PV: ${monCN.pv}   UV: ${monCN.uv}
+🌍 海外  PV: ${monOS.pv}   UV: ${monOS.uv}`;
 
   sendTelegram(msg);
   pruneOldLogs();
