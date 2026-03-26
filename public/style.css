@@ -118,10 +118,18 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px; color: #2a3a5a;
   white-space: nowrap;
 }
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
 .slogan {
-  font-size: 10px; color: #7c8db0;
+  font-size: 11px;
+  color: #7c8db0;
   white-space: nowrap;
-  margin-top: 2px;
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== LAYOUT ===== */
