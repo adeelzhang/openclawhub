@@ -55,17 +55,29 @@ function pruneOldLogs() {
 // ── 内存滚动窗口（5分钟）─────────────────────────────────
 let window5m = { reqs:[], errors4xx:0, errors5xx:0 };
 
-// ── 中间件：记录每次请求（含 country）──────────────────────
+// 爬虫 UA 关键词
+const BOT_RE = /bot|crawler|spider|slurp|bingpreview|google|baidu|yandex|sogou|360spider|bytespider|petalbot|semrush|ahrefs|mj12|dataprovider|zgrab|nuclei|masscan|nmap/i;
+
+function isBot(req) {
+  const ua = req.headers['user-agent'] || '';
+  return BOT_RE.test(ua);
+}
+
+// ── 中间件：记录每次请求（含 country、ua，过滤爬虫）────────
 app.use((req, res, next) => {
   const ip      = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress || '';
   const country = (req.headers['cf-ipcountry'] || '').toUpperCase() || 'XX';
+  const ua      = req.headers['user-agent'] || '';
+  const bot     = isBot(req);
   const t       = Math.floor(Date.now() / 1000);
   res.on('finish', () => {
-    const entry = { t, ip, country, path: req.path, status: res.statusCode };
+    const entry = { t, ip, country, path: req.path, status: res.statusCode, bot };
     appendLog(entry);
-    window5m.reqs.push(entry);
-    if (res.statusCode >= 400 && res.statusCode < 500) window5m.errors4xx++;
-    if (res.statusCode >= 500) window5m.errors5xx++;
+    if (!bot) {
+      window5m.reqs.push(entry);
+      if (res.statusCode >= 400 && res.statusCode < 500) window5m.errors4xx++;
+      if (res.statusCode >= 500) window5m.errors5xx++;
+    }
   });
   next();
 });
@@ -105,12 +117,14 @@ function readLogsInRange(fromTs) {
 
 function calcStats(entries, region) {
   // region: 'cn' | 'overseas' | undefined(全部)
-  let filtered = entries;
-  if (region === 'cn')       filtered = entries.filter(e => e.country === 'CN');
-  if (region === 'overseas') filtered = entries.filter(e => e.country && e.country !== 'CN' && e.country !== 'XX');
-  const pvEntries = filtered.filter(e => e.path === '/');
+  // 只统计真实用户（非爬虫）、主页、200/304 均计入 UV 但 PV 只计 200
+  let filtered = entries.filter(e => !e.bot);
+  if (region === 'cn')       filtered = filtered.filter(e => e.country === 'CN');
+  if (region === 'overseas') filtered = filtered.filter(e => e.country && e.country !== 'CN' && e.country !== 'XX');
+  const pvEntries = filtered.filter(e => e.path === '/' && e.status === 200);
+  const uvEntries = filtered.filter(e => e.path === '/' && (e.status === 200 || e.status === 304));
   const pv = pvEntries.length;
-  const uv = new Set(pvEntries.map(e => e.ip)).size;
+  const uv = new Set(uvEntries.map(e => e.ip)).size;
   return { pv, uv };
 }
 
