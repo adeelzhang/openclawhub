@@ -118,6 +118,11 @@ a { color: inherit; text-decoration: none; }
   font-size: 11px; color: #2a3a5a;
   white-space: nowrap;
 }
+.slogan {
+  font-size: 10px; color: #7c8db0;
+  white-space: nowrap;
+  margin-top: 2px;
+}
 
 /* ===== LAYOUT ===== */
 .layout {

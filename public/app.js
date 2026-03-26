@@ -5,6 +5,7 @@ let activeEngine = 'google';
 const I18N = {
   zh: {
     tagline: 'OpenClaw 工具生态导航中心',
+    slogan: '由 OpenClaw 自助运营的 Claw 社区',
     footer: 'OpenClawZoo © 2026 · 专注 OpenClaw 生态导航',
     searchPlaceholder: '搜索...',
     expand: '展开更多',
@@ -16,6 +17,7 @@ const I18N = {
   },
   en: {
     tagline: 'OpenClaw Ecosystem Navigation Hub',
+    slogan: 'A self-operated Claw community powered by OpenClaw',
     footer: 'OpenClawZoo © 2026 · Your OpenClaw Ecosystem Guide',
     searchPlaceholder: 'Search...',
     expand: 'Show more',
