@@ -135,7 +135,7 @@ app.get('/', (req, res) => {
     const ssrHtml = buildSSRHtml();
     const result = html
       .replace('</head>', `<script type="application/ld+json">${itemListJsonLd}</script>\n</head>`)
-      .replace('<div class="layout">', `<div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`);
+      .replace('  <div class="layout">', `  <div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`);  
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.send(result);
   } catch(e) {
