@@ -128,16 +128,23 @@ function buildSSRHtml() {
   }).join('');
 }
 
+// 内存缓存，启动时预渲染一次，避免每次请求读文件
+let _cachedHtml = null;
+function getCachedHtml() {
+  if (_cachedHtml) return _cachedHtml;
+  const html = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+  const itemListJsonLd = buildItemListJsonLd();
+  const ssrHtml = buildSSRHtml();
+  _cachedHtml = html
+    .replace('</head>', `<script type="application/ld+json">${itemListJsonLd}</script>\n</head>`)
+    .replace('  <div class="layout">', `  <div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`);
+  return _cachedHtml;
+}
+
 app.get('/', (req, res) => {
   try {
-    const html = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
-    const itemListJsonLd = buildItemListJsonLd();
-    const ssrHtml = buildSSRHtml();
-    const result = html
-      .replace('</head>', `<script type="application/ld+json">${itemListJsonLd}</script>\n</head>`)
-      .replace('  <div class="layout">', `  <div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`);  
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.send(result);
+    res.send(getCachedHtml());
   } catch(e) {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   }
