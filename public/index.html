@@ -8,6 +8,9 @@
   <meta name="keywords" content="OpenClaw,AI Agent,MaaS,MCP,Claude Code,Cursor,Coding Plan,AI工具导航,OpenClawZoo"/>
   <meta name="author" content="OpenClawZoo"/>
   <link rel="canonical" href="https://www.openclawzoo.com/"/>
+  <link rel="alternate" hreflang="zh-CN" href="https://www.openclawzoo.com/"/>
+  <link rel="alternate" hreflang="en" href="https://www.openclawzoo.com/"/>
+  <link rel="alternate" hreflang="x-default" href="https://www.openclawzoo.com/"/>
   <meta name="google-site-verification" content="iTDw5SczWgcGeXHyNp1Jzu2DHKhKT9oa_C_0dRtPkpY"/>
   <!-- 百度/360/搜狗站长验证占位，填入后取消注释 -->
   <!-- <meta name="baidu-site-verification" content="YOUR_BAIDU_CODE"/> -->
@@ -23,6 +26,9 @@
   <meta property="og:description" content="汇聚 AI 助手、Agent、MaaS、MCP、编程工具等 300+ 精选资源"/>
   <meta property="og:url" content="https://www.openclawzoo.com/"/>
   <meta property="og:type" content="website"/>
+  <meta property="og:image" content="https://www.openclawzoo.com/og-image.svg"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
   <meta property="og:site_name" content="OpenClawZoo"/>
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary"/>
@@ -30,19 +36,39 @@
   <meta name="twitter:description" content="汇聚 AI 助手、Agent、MaaS、MCP、编程工具等 300+ 精选资源"/>
   <!-- JSON-LD -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "OpenClawZoo",
-    "url": "https://www.openclawzoo.com",
-    "description": "OpenClaw 工具生态导航，汇聚 AI 助手、Agent 平台、MaaS 模型 API、编程工具、MCP 服务等 300+ 精选资源",
-    "inLanguage": ["zh-CN", "en"],
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.openclawzoo.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "OpenClawZoo",
+      "url": "https://www.openclawzoo.com",
+      "description": "OpenClaw 工具生态导航，汇聚 AI 助手、Agent 平台、MaaS 模型 API、编程工具、MCP 服务等 300+ 精选资源",
+      "inLanguage": ["zh-CN", "en"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.openclawzoo.com/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "OpenClaw 工具生态导航分类",
+      "url": "https://www.openclawzoo.com",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "AI 助手变种", "url": "https://www.openclawzoo.com/#variants"},
+        {"@type": "ListItem", "position": 2, "name": "Agent 平台", "url": "https://www.openclawzoo.com/#agents"},
+        {"@type": "ListItem", "position": 3, "name": "编程工具", "url": "https://www.openclawzoo.com/#coding"},
+        {"@type": "ListItem", "position": 4, "name": "MaaS 模型 API", "url": "https://www.openclawzoo.com/#maas"},
+        {"@type": "ListItem", "position": 5, "name": "AI 模型变体", "url": "https://www.openclawzoo.com/#variants"},
+        {"@type": "ListItem", "position": 6, "name": "云服务", "url": "https://www.openclawzoo.com/#cloud"},
+        {"@type": "ListItem", "position": 7, "name": "MCP 服务", "url": "https://www.openclawzoo.com/#mcp"},
+        {"@type": "ListItem", "position": 8, "name": "技能插件", "url": "https://www.openclawzoo.com/#skills"},
+        {"@type": "ListItem", "position": 9, "name": "教程资源", "url": "https://www.openclawzoo.com/#tutorials"},
+        {"@type": "ListItem", "position": 10, "name": "支付工具", "url": "https://www.openclawzoo.com/#payment"}
+      ]
     }
-  }
+  ]
   </script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
   <link rel="stylesheet" href="style.css"/>
@@ -50,7 +76,7 @@
 <body>
   <header class="banner">
     <div class="brand-block">
-      <div class="brand">🦞 <span class="brand-main">OpenClaw</span><span class="brand-zoo">Zoo</span></div>
+      <h1 class="brand">🦞 <span class="brand-main">OpenClaw</span><span class="brand-zoo">Zoo</span></h1>
       <p class="slogan" data-i18n="slogan">由 OpenClaw 自助运营的 Claw 社区</p>
     </div>
     <div class="search-bar">

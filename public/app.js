@@ -101,13 +101,14 @@ function renderCard(item) {
   card.rel = 'noopener noreferrer';
 
   const favicon = getFavicon(item.url);
+  const itemName = langText(item, 'name');
   const iconHtml = favicon
-    ? `<img src="${favicon}" onerror="this.style.display='none';this.parentNode.innerHTML+='${item.icon || '🔗'}'"/>`
+    ? `<img src="${favicon}" alt="${itemName} logo" onerror="this.style.display='none';this.parentNode.innerHTML+='${item.icon || '🔗'}'"/>`
     : `${item.icon || '🔗'}`;
 
   const tagClass = TAG_MAP[item.tag] || 'cloud';
   const tagLabel = t('tags')[item.tag] || item.tag || '';
-  const name = langText(item, 'name');
+  const name = itemName;
   const desc = langText(item, 'desc');
 
   card.innerHTML = `
@@ -136,7 +137,7 @@ function renderSection(cat) {
   header.className = 'section-header';
   header.innerHTML = `
     <span class="section-emoji">${cat.emoji}</span>
-    <span class="section-title">${catName}</span>
+    <h2 class="section-title">${catName}</h2>
     <span class="section-desc">${catDesc}</span>
     <span class="section-count">${total} ${t('itemsUnit')}</span>
   `;
