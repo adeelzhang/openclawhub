@@ -258,10 +258,11 @@ setInterval(report, 5 * 60 * 1000);
 // ── 百度主动推送 ─────────────────────────────────────────
 function baiduPush() {
   const token = 'Ed2AqwMytzDs9F5H';
-  const site = 'https://www.openclawzoo.com';
+  const site = 'www.openclawzoo.com';
+  const baseUrl = 'https://www.openclawzoo.com';
   const urls = [
-    site + '/',
-    ...CATEGORIES.map(c => site + '/#' + c.id)
+    baseUrl + '/',
+    ...CATEGORIES.map(c => baseUrl + '/#' + c.id)
   ].join('\n');
   const https = require('https');
   const urlObj = new URL(`http://data.zz.baidu.com/urls?site=${site}&token=${token}`);
