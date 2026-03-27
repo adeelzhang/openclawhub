@@ -86,8 +86,61 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// ── 加载分类数据 ──────────────────────────────────────────
+let CATEGORIES = [];
+try {
+  const src = fs.readFileSync(path.join(__dirname, 'public', 'data.js'), 'utf8');
+  const match = src.match(/const CATEGORIES = (\[[\s\S]*\]);/);
+  if (match) CATEGORIES = JSON.parse(match[1]);
+} catch(e) { console.error('[data]', e.message); }
+
+// ── 生成 ItemList JSON-LD ─────────────────────────────────
+function buildItemListJsonLd() {
+  const items = [];
+  CATEGORIES.forEach(cat => {
+    (cat.items || []).slice(0, 10).forEach((item, i) => {
+      items.push({
+        '@type': 'ListItem',
+        position: items.length + 1,
+        name: item.name,
+        description: item.desc,
+        url: item.url
+      });
+    });
+  });
+  return JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'OpenClawZoo AI工具导航',
+    description: 'OpenClaw 工具生态导航，300+ 精选资源',
+    numberOfItems: items.length,
+    itemListElement: items
+  });
+}
+
+// ── 生成 SSR 静态 HTML（爬虫可见）────────────────────────
+function buildSSRHtml() {
+  return CATEGORIES.map(cat => {
+    const items = (cat.items || []).map(item =>
+      `<li><a href="${item.url || '#'}" rel="noopener noreferrer"><strong>${item.name}</strong>${item.nameEn && item.nameEn !== item.name ? ` (${item.nameEn})` : ''} — ${item.desc || ''}</a></li>`
+    ).join('');
+    return `<section id="ssr-${cat.id}"><h2>${cat.emoji} ${cat.name}</h2><p>${cat.desc || ''}</p><ul>${items}</ul></section>`;
+  }).join('');
+}
+
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  try {
+    const html = fs.readFileSync(path.join(__dirname, 'public', 'index.html'), 'utf8');
+    const itemListJsonLd = buildItemListJsonLd();
+    const ssrHtml = buildSSRHtml();
+    const result = html
+      .replace('</head>', `<script type="application/ld+json">${itemListJsonLd}</script>\n</head>`)
+      .replace('<div class="layout">', `<div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`);
+    res.setHeader('Content-Type', 'text/html; charset=utf-8');
+    res.send(result);
+  } catch(e) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  }
 });
 
 // 根据 Cloudflare CF-IPCountry 头判断地区
