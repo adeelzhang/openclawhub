@@ -6,7 +6,7 @@ const I18N = {
   zh: {
     tagline: 'OpenClaw 工具生态导航中心',
     slogan: '由 OpenClaw 自助运营的 Claw 社区',
-    footer: 'OpenClawZoo © 2026 · 专注 OpenClaw 生态导航 · <a href="/privacy.html" style="color:inherit;opacity:0.7;">隐私政策</a>',
+    footer: 'OpenClawZoo © 2026 · 专注 OpenClaw 生态导航 · <a href="/privacy.html" style="color:#38bdf8;">隐私政策</a>',
     searchPlaceholder: '搜索...',
     expand: '展开更多',
     collapse: '收起',
@@ -18,7 +18,7 @@ const I18N = {
   en: {
     tagline: 'OpenClaw Ecosystem Navigation Hub',
     slogan: 'A self-operated Claw community powered by OpenClaw',
-    footer: 'OpenClawZoo © 2026 · Your OpenClaw Ecosystem Guide · <a href="/privacy.html" style="color:inherit;opacity:0.7;">Privacy Policy</a>',
+    footer: 'OpenClawZoo © 2026 · Your OpenClaw Ecosystem Guide · <a href="/privacy.html" style="color:#38bdf8;">Privacy Policy</a>',
     searchPlaceholder: 'Search...',
     expand: 'Show more',
     collapse: 'Collapse',

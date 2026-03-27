@@ -68,7 +68,7 @@ a { color: inherit; text-decoration: none; }
 .stab {
   background: none; border: none; cursor: pointer;
   padding: 0 13px; height: 38px;
-  font-size: 12px; font-weight: 500; color: #4a5a7a;
+  font-size: 12px; font-weight: 500; color: #7a8aaa;
   border-right: 1px solid rgba(56,189,248,0.1);
   transition: all .18s; white-space: nowrap; flex-shrink: 0;
 }
@@ -80,7 +80,7 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px; color: #c8d4e8;
   font-family: inherit;
 }
-#searchInput::placeholder { color: #3a4a6a; }
+#searchInput::placeholder { color: #6a7a9a; }
 #searchBtn {
   background: none; border: none; cursor: pointer;
   padding: 0 14px; height: 38px;
@@ -102,7 +102,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 20px;
   border: 1px solid rgba(99,179,237,0.25);
   background: transparent;
-  color: #64748b;
+  color: #8a9ab8;
   font-size: 11px; font-weight: 500;
   cursor: pointer;
   transition: all .18s;
@@ -116,7 +116,7 @@ a { color: inherit; text-decoration: none; }
   font-weight: 600;
 }
 .tagline {
-  font-size: 11px; color: #2a3a5a;
+  font-size: 11px; color: #6a7fa8;
   white-space: nowrap;
 }
 .brand-block {
@@ -127,7 +127,7 @@ a { color: inherit; text-decoration: none; }
 }
 .slogan {
   font-size: 11px;
-  color: #7c8db0;
+  color: #9aadc8;
   white-space: nowrap;
   margin: 0;
   padding: 0;
@@ -157,7 +157,7 @@ a { color: inherit; text-decoration: none; }
 .nav-item {
   display: flex; align-items: center; gap: 8px;
   padding: 8px 16px;
-  font-size: 13px; color: #4a5a7a;
+  font-size: 13px; color: #7a8aaa;
   cursor: pointer;
   border-radius: 8px;
   margin: 1px 8px;
@@ -198,12 +198,12 @@ main#sections {
   margin: 0; padding: 0;
 }
 .section-desc {
-  font-size: 12px; color: #374151;
+  font-size: 12px; color: #8a9ab8;
   flex: 1;
   margin-left: 4px;
 }
 .section-count {
-  font-size: 11px; color: #2a3a5a;
+  font-size: 11px; color: #6a7fa8;
   background: rgba(56,189,248,0.06);
   border: 1px solid rgba(56,189,248,0.1);
   border-radius: 20px;
@@ -284,14 +284,14 @@ main#sections {
 
 .card-desc {
   font-size: 11.5px;
-  color: #4a5a7a;
+  color: #7a8aaa;
   line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.card:hover .card-desc { color: #64748b; }
+.card:hover .card-desc { color: #8a9ab8; }
 
 /* ===== EXPAND BUTTON ===== */
 .expand-wrap {
@@ -320,7 +320,7 @@ footer {
   text-align: center;
   padding: 28px;
   border-top: 1px solid rgba(255,255,255,0.04);
-  font-size: 12px; color: #1e2d4a;
+  font-size: 12px; color: #5a7a9a;
 }
 
 /* ===== RESPONSIVE ===== */
