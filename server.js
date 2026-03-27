@@ -255,6 +255,34 @@ ${topStr}
 
 setInterval(report, 5 * 60 * 1000);
 
+// ── 百度主动推送 ─────────────────────────────────────────
+function baiduPush() {
+  const token = 'Ed2AqwMytzDs9F5H';
+  const site = 'https://www.openclawzoo.com';
+  const urls = [
+    site + '/',
+    ...CATEGORIES.map(c => site + '/#' + c.id)
+  ].join('\n');
+  const https = require('https');
+  const urlObj = new URL(`http://data.zz.baidu.com/urls?site=${site}&token=${token}`);
+  const options = {
+    hostname: 'data.zz.baidu.com',
+    path: `/urls?site=${encodeURIComponent(site)}&token=${token}`,
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain', 'Content-Length': Buffer.byteLength(urls) }
+  };
+  const req = require('http').request(options, res => {
+    let d = '';
+    res.on('data', c => d += c);
+    res.on('end', () => console.log('[baidu-push]', d));
+  });
+  req.on('error', e => console.error('[baidu-push error]', e.message));
+  req.write(urls);
+  req.end();
+}
+
 app.listen(PORT, () => {
   console.log(`OpenClawHub running at http://localhost:${PORT}`);
+  // 启动后延迟5秒推送，确保服务完全就绪
+  setTimeout(baiduPush, 5000);
 });
