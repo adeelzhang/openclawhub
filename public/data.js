@@ -212,7 +212,7 @@ const CATEGORIES = [
         "icon": "🟠",
         "desc": "国内最大云平台，生态完整",
         "descEn": "Largest cloud platform in China",
-        "url": "https://www.aliyun.com",
+        "url": "https://www.aliyun.com/minisite/goods?userCode=bxzn3iz6",
         "tag": "cloud"
       },
       {
@@ -1359,7 +1359,7 @@ const CATEGORIES = [
         "icon": "💎",
         "desc": "200+ 开源商用模型统一 API",
         "descEn": "200+ open/commercial model unified API",
-        "url": "https://www.siliconflow.cn/",
+        "url": "https://cloud.siliconflow.cn/i/Lb4conx9",
         "tag": "cloud"
       },
       {
