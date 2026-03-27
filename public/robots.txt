@@ -1,3 +1,23 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /logs/
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /api/
+Crawl-delay: 1
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+
+User-agent: Sogou web spider
+Allow: /
+Disallow: /api/
+
+User-agent: 360Spider
+Allow: /
+Disallow: /api/
+
 Sitemap: https://www.openclawzoo.com/sitemap.xml
