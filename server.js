@@ -128,6 +128,16 @@ function buildSSRHtml() {
   }).join('');
 }
 
+// 获取 git commit hash 作为静态资源版本号
+function getGitHash() {
+  try {
+    return require('child_process').execSync('git rev-parse --short HEAD', {cwd: __dirname}).toString().trim();
+  } catch(e) {
+    return Date.now().toString(36);
+  }
+}
+const ASSET_VER = getGitHash();
+
 // 内存缓存，启动时预渲染一次，避免每次请求读文件
 let _cachedHtml = null;
 function getCachedHtml() {
@@ -137,7 +147,9 @@ function getCachedHtml() {
   const ssrHtml = buildSSRHtml();
   _cachedHtml = html
     .replace('</head>', `<script type="application/ld+json">${itemListJsonLd}</script>\n</head>`)
-    .replace('  <div class="layout">', `  <div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`);
+    .replace('  <div class="layout">', `  <div id="ssr-content" style="display:none" aria-hidden="true">${ssrHtml}</div>\n  <div class="layout">`)
+    .replace('href="style.css"', `href="style.css?v=${ASSET_VER}"`)
+    .replace(/src="(app\.js|data\.v2\.js|data\.min\.js)(\?v=[^"]*)?"/, (m, f) => `src="${f}?v=${ASSET_VER}"`);
   return _cachedHtml;
 }
 
