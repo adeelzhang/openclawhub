@@ -226,9 +226,9 @@ function topPaths(entries, n = 3) {
   return Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, n);
 }
 
-function startOfDay(d)   { const c = cst(d); return new Date(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()).getTime() / 1000 - 8*3600; }
-function startOfWeek(d)  { const c = cst(d); c.setUTCDate(c.getUTCDate() - c.getUTCDay()); return new Date(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()).getTime() / 1000 - 8*3600; }
-function startOfMonth(d) { const c = cst(d); return new Date(c.getUTCFullYear(), c.getUTCMonth(), 1).getTime() / 1000 - 8*3600; }
+function startOfDay(d)   { const c = cst(d); return Date.UTC(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()) / 1000 - 8*3600; }
+function startOfWeek(d)  { const c = cst(d); c.setUTCDate(c.getUTCDate() - c.getUTCDay()); return Date.UTC(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()) / 1000 - 8*3600; }
+function startOfMonth(d) { const c = cst(d); return Date.UTC(c.getUTCFullYear(), c.getUTCMonth(), 1) / 1000 - 8*3600; }
 
 // ── 5分钟定时推送 ──────────────────────────────────────────
 function report() {
