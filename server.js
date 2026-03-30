@@ -206,6 +206,20 @@ function calcStats(entries, region) {
   return { pv, uv };
 }
 
+function calcDailyStats(monthEntries) {
+  // 按东8区日期分组，返回当月每天的 PV/UV
+  const days = {};
+  monthEntries.forEach(e => {
+    if (e.bot || e.path !== '/' || e.status !== 200) return;
+    const d = new Date((e.t || 0) * 1000 + 8 * 3600 * 1000);
+    const day = d.toISOString().slice(5, 10); // MM-DD
+    if (!days[day]) days[day] = { pv: 0, uv: new Set() };
+    days[day].pv++;
+    days[day].uv.add(e.ip);
+  });
+  return Object.keys(days).sort().map(d => `  ${d}  PV:${days[d].pv}  UV:${days[d].uv.size}`).join('\n');
+}
+
 function topPaths(entries, n = 3) {
   const cnt = {};
   entries.forEach(e => { cnt[e.path] = (cnt[e.path] || 0) + 1; });
@@ -244,6 +258,8 @@ function report() {
   const timeStr = `${now.getUTCFullYear()}-${pad(now.getUTCMonth()+1)}-${pad(now.getUTCDate())} ${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())} CST`;
   const topStr  = top.length ? top.map(([p, c]) => `  ${p} ×${c}`).join('\n') : '  (无请求)';
 
+  const dailyStr = calcDailyStats(monthEntries);
+
   const msg =
 `📊 <b>OpenClawZoo 监控报告</b>
 🕐 ${timeStr}
@@ -265,7 +281,10 @@ ${topStr}
 
 <b>【本月】</b>
 🇨🇳 国内  PV: ${monCN.pv}   UV: ${monCN.uv}
-🌍 海外  PV: ${monOS.pv}   UV: ${monOS.uv}`;
+🌍 海外  PV: ${monOS.pv}   UV: ${monOS.uv}
+
+<b>【本月每日明细】</b>
+${dailyStr}`;
 
   sendTelegram(msg);
   pruneOldLogs();
