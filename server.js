@@ -28,8 +28,14 @@ function sendTelegram(text) {
 const LOG_DIR = path.join(__dirname, 'logs');
 if (!fs.existsSync(LOG_DIR)) fs.mkdirSync(LOG_DIR, { recursive: true });
 
+// 东8区时间工具
+function cst(d) {
+  // 返回东8区的 Date 对象（偏移+8h）
+  return new Date((d || new Date()).getTime() + 8 * 3600 * 1000);
+}
+
 function logFile() {
-  const d = new Date();
+  const d = cst();
   const ym = `${d.getUTCFullYear()}-${String(d.getUTCMonth()+1).padStart(2,'0')}`;
   return path.join(LOG_DIR, `access-${ym}.log`);
 }
@@ -39,8 +45,8 @@ function appendLog(entry) {
 }
 
 function pruneOldLogs() {
-  const cutoff = new Date();
-  cutoff.setMonth(cutoff.getMonth() - 6);
+  const cutoff = cst();
+  cutoff.setUTCMonth(cutoff.getUTCMonth() - 6);
   const cutoffStr = `access-${cutoff.getUTCFullYear()}-${String(cutoff.getUTCMonth()+1).padStart(2,'0')}.log`;
   try {
     fs.readdirSync(LOG_DIR).forEach(f => {
@@ -206,13 +212,13 @@ function topPaths(entries, n = 3) {
   return Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, n);
 }
 
-function startOfDay(d)   { return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime() / 1000; }
-function startOfWeek(d)  { const c = new Date(d); c.setDate(d.getDate() - d.getDay()); return startOfDay(c); }
-function startOfMonth(d) { return new Date(d.getFullYear(), d.getMonth(), 1).getTime() / 1000; }
+function startOfDay(d)   { const c = cst(d); return new Date(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()).getTime() / 1000 - 8*3600; }
+function startOfWeek(d)  { const c = cst(d); c.setUTCDate(c.getUTCDate() - c.getUTCDay()); return new Date(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()).getTime() / 1000 - 8*3600; }
+function startOfMonth(d) { const c = cst(d); return new Date(c.getUTCFullYear(), c.getUTCMonth(), 1).getTime() / 1000 - 8*3600; }
 
 // ── 5分钟定时推送 ──────────────────────────────────────────
 function report() {
-  const now = new Date();
+  const now = cst();
   const w   = window5m;
   window5m  = { reqs: [], errors4xx: 0, errors5xx: 0 };
 
@@ -235,7 +241,7 @@ function report() {
   const monOS  = calcStats(monthEntries, 'overseas');
 
   const pad = n => String(n).padStart(2, '0');
-  const timeStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  const timeStr = `${now.getUTCFullYear()}-${pad(now.getUTCMonth()+1)}-${pad(now.getUTCDate())} ${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())} CST`;
   const topStr  = top.length ? top.map(([p, c]) => `  ${p} ×${c}`).join('\n') : '  (无请求)';
 
   const msg =
