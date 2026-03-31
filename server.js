@@ -227,22 +227,22 @@ function topPaths(entries, n = 3) {
 }
 
 // 以下函数返回东8区某天/周/月起始时刻的 Unix 时间戳
-// 思路：先把当前时间转为东8区，取年月日，再转回UTC时间戳
+// 思路：先把当前时间转为东8区，取年月日，构造CST零点（UTC-8h）
 function startOfDay(d) {
-  const c = cst(d); // 东8区时间
+  const c = cst(d);
   const y = c.getUTCFullYear(), mo = c.getUTCMonth(), day = c.getUTCDate();
-  return Date.UTC(y, mo, day, -8, 0, 0) / 1000; // UTC midnight - 8h = CST midnight
+  return (Date.UTC(y, mo, day) - 8 * 3600 * 1000) / 1000;
 }
 function startOfWeek(d) {
   const c = cst(d);
-  const dow = c.getUTCDay(); // 0=周日
+  const dow = c.getUTCDay();
   const y = c.getUTCFullYear(), mo = c.getUTCMonth(), day = c.getUTCDate() - dow;
-  return Date.UTC(y, mo, day, -8, 0, 0) / 1000;
+  return (Date.UTC(y, mo, day) - 8 * 3600 * 1000) / 1000;
 }
 function startOfMonth(d) {
   const c = cst(d);
   const y = c.getUTCFullYear(), mo = c.getUTCMonth();
-  return Date.UTC(y, mo, 1, -8, 0, 0) / 1000;
+  return (Date.UTC(y, mo, 1) - 8 * 3600 * 1000) / 1000;
 }
 
 // ── 5分钟定时推送 ──────────────────────────────────────────
