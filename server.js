@@ -226,9 +226,24 @@ function topPaths(entries, n = 3) {
   return Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, n);
 }
 
-function startOfDay(d)   { const c = cst(d); return Date.UTC(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()) / 1000 - 8*3600; }
-function startOfWeek(d)  { const c = cst(d); c.setUTCDate(c.getUTCDate() - c.getUTCDay()); return Date.UTC(c.getUTCFullYear(), c.getUTCMonth(), c.getUTCDate()) / 1000 - 8*3600; }
-function startOfMonth(d) { const c = cst(d); return Date.UTC(c.getUTCFullYear(), c.getUTCMonth(), 1) / 1000 - 8*3600; }
+// 以下函数返回东8区某天/周/月起始时刻的 Unix 时间戳
+// 思路：先把当前时间转为东8区，取年月日，再转回UTC时间戳
+function startOfDay(d) {
+  const c = cst(d); // 东8区时间
+  const y = c.getUTCFullYear(), mo = c.getUTCMonth(), day = c.getUTCDate();
+  return Date.UTC(y, mo, day, -8, 0, 0) / 1000; // UTC midnight - 8h = CST midnight
+}
+function startOfWeek(d) {
+  const c = cst(d);
+  const dow = c.getUTCDay(); // 0=周日
+  const y = c.getUTCFullYear(), mo = c.getUTCMonth(), day = c.getUTCDate() - dow;
+  return Date.UTC(y, mo, day, -8, 0, 0) / 1000;
+}
+function startOfMonth(d) {
+  const c = cst(d);
+  const y = c.getUTCFullYear(), mo = c.getUTCMonth();
+  return Date.UTC(y, mo, 1, -8, 0, 0) / 1000;
+}
 
 // ── 5分钟定时推送 ──────────────────────────────────────────
 function report() {
