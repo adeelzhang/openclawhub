@@ -226,22 +226,18 @@ function topPaths(entries, n = 3) {
   return Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, n);
 }
 
-// 以下函数返回东8区某天/周/月起始时刻的 Unix 时间戳
-// 思路：先把当前时间转为东8区，取年月日，构造CST零点（UTC-8h）
-function startOfDay(d) {
-  const c = cst(d);
-  const y = c.getUTCFullYear(), mo = c.getUTCMonth(), day = c.getUTCDate();
+// 以下函数接收已经是东8区的Date对象，返回该天/周/月起始的Unix时间戳
+function startOfDay(cstDate) {
+  const y = cstDate.getUTCFullYear(), mo = cstDate.getUTCMonth(), day = cstDate.getUTCDate();
   return (Date.UTC(y, mo, day) - 8 * 3600 * 1000) / 1000;
 }
-function startOfWeek(d) {
-  const c = cst(d);
-  const dow = c.getUTCDay();
-  const y = c.getUTCFullYear(), mo = c.getUTCMonth(), day = c.getUTCDate() - dow;
+function startOfWeek(cstDate) {
+  const dow = cstDate.getUTCDay();
+  const y = cstDate.getUTCFullYear(), mo = cstDate.getUTCMonth(), day = cstDate.getUTCDate() - dow;
   return (Date.UTC(y, mo, day) - 8 * 3600 * 1000) / 1000;
 }
-function startOfMonth(d) {
-  const c = cst(d);
-  const y = c.getUTCFullYear(), mo = c.getUTCMonth();
+function startOfMonth(cstDate) {
+  const y = cstDate.getUTCFullYear(), mo = cstDate.getUTCMonth();
   return (Date.UTC(y, mo, 1) - 8 * 3600 * 1000) / 1000;
 }
 
